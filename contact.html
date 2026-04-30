@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — Conexxion Tech India</title>
+<meta name="description" content="Get in touch with Conexxion Tech India for infrastructure, IT staffing, telecom, data center and cloud projects. We respond within one business day." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-hero {
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%);
+    padding: 80px 0 60px;
+  }
+  .contact-hero h1 { max-width: 900px; margin: 20px 0 24px; }
+  .contact-hero .lede {
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Contact main */
+  .contact-main { padding: 80px 0; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* Form side */
+  .contact-form-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 48px;
+    box-shadow: var(--shadow-sm);
+  }
+  .contact-form-card h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .contact-form-card .form-intro {
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .form-actions {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .form-meta {
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .form-meta::before {
+    content: '🔒';
+    font-size: 14px;
+  }
+
+  /* Info side */
+  .contact-info { padding-top: 8px; }
+  .info-block {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line);
+  }
+  .info-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .info-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand);
+    margin-bottom: 18px;
+  }
+  .info-block h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .info-block p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .info-block p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .info-block a {
+    color: var(--brand);
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .info-block a:hover {
+    border-bottom-color: var(--brand);
+  }
+
+  /* Map area */
+  .map-section {
+    background: var(--bg-cream);
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .map-content h2 { margin-bottom: 16px; }
+  .map-content p {
+    font-size: 16px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .map-frame {
+    background: linear-gradient(135deg, #b6c5d6 0%, #d4c5a8 100%);
+    border-radius: 14px;
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  /* Stylized map */
+  .map-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(-45deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .map-frame::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(45,90,61,0.12) 0%, transparent 40%),
+      radial-gradient(ellipse at 70% 40%, rgba(13,59,102,0.12) 0%, transparent 40%);
+  }
+  .map-pin {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+  }
+  .map-pin-marker {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .map-pin-marker::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px; height: 10px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  .map-pin-pulse {
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translate(-50%, 0);
+    width: 30px; height: 30px;
+    background: rgba(238,150,75,0.4);
+    border-radius: 50%;
+    animation: mapPulse 2s infinite;
+  }
+  @keyframes mapPulse {
+    0% { transform: translate(-50%, 0) scale(0.5); opacity: 0.8; }
+    100% { transform: translate(-50%, 0) scale(2.5); opacity: 0; }
+  }
+  .map-label {
+    position: absolute;
+    top: calc(50% + 24px); left: 50%;
+    transform: translate(-50%, 0);
+    background: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--brand);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .map-label strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+  .map-corner {
+    position: absolute;
+    bottom: 16px; right: 16px;
+    background: rgba(255,255,255,0.95);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+
+  /* Department contacts */
+  .dept-section { padding: 80px 0; }
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .dept-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+  .dept-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand);
+  }
+  .dept-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .dept-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .dept-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .dept-card a {
+    font-size: 14px;
+    color: var(--brand);
+    font-weight: 500;
+    word-break: break-word;
+  }
+
+  /* FAQ */
+  .quick-faq { padding: 80px 0; background: var(--bg-cream); }
+  .quick-faq h2 { margin-bottom: 50px; max-width: 800px; }
+  .quick-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .quick-faq-item {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+  }
+  .quick-faq-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .quick-faq-item p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 960px) {
+    .contact-grid, .map-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-form-card { padding: 32px 24px; }
+    .dept-grid { grid-template-columns: 1fr; }
+    .quick-faq-grid { grid-template-columns: 1fr; }
+    .contact-main, .map-section, .dept-section, .quick-faq { padding: 50px 0; }
+    .map-frame { height: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a><a href="#">Investor Relations</a><a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+    </ul>
+    <a href="#contact-form" class="btn btn-primary">Send a Message →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a><span>/</span>Contact Us
+    </div>
+    <span class="eyebrow">Contact · We respond within 1 business day</span>
+    <h1>Have an infrastructure problem <em>worth solving?</em></h1>
+    <p class="lede">
+      Whether you're scoping a multi-site rollout, planning a cloud migration, looking to fill a niche engineering role, or just exploring options — we'd love to hear from you. Fill in the form, and we'll come back inside one business day with a real human and a clear next step.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-main" id="contact-form">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Form -->
+      <div class="contact-form-card">
+        <h2>Send us a message</h2>
+        <p class="form-intro">Tell us about your project, hiring need or general enquiry. The more detail you share, the more useful our first response will be.</p>
+
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your name <span class="req">*</span></label>
+              <input type="text" placeholder="Anita Sharma" required>
+            </div>
+            <div class="form-group">
+              <label>Company <span class="req">*</span></label>
+              <input type="text" placeholder="Acme Industries" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Work email <span class="req">*</span></label>
+              <input type="email" placeholder="anita@acme.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="+91 98xxxxxxxx">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>I'm interested in <span class="req">*</span></label>
+            <select required>
+              <option value="">Select a service area</option>
+              <option>IT Staffing — contract / permanent / managed</option>
+              <option>Telecom — site engineering, RAN, FTTx, managed</option>
+              <option>Data Center — design, build, migrate, operate</option>
+              <option>Cloud Infrastructure — strategy, migration, platform</option>
+              <option>Multiple services / general enquiry</option>
+              <option>Careers — I'd like to join Conexxion</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Project size / budget</label>
+              <select>
+                <option value="">Select range (optional)</option>
+                <option>Under ₹10 lakh</option>
+                <option>₹10 lakh – ₹50 lakh</option>
+                <option>₹50 lakh – ₹2 crore</option>
+                <option>₹2 crore – ₹10 crore</option>
+                <option>Above ₹10 crore</option>
+                <option>Not sure yet / discussing</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Timeline</label>
+              <select>
+                <option value="">Select timeline (optional)</option>
+                <option>Urgent — this month</option>
+                <option>Next quarter</option>
+                <option>Next 6 months</option>
+                <option>Exploratory — no fixed timeline</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Tell us more <span class="req">*</span></label>
+            <textarea rows="5" placeholder="A few sentences on what you're working on, key constraints, and the outcome you're looking for. The more specific, the better our first response can be." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">Send message →</button>
+            <span class="form-meta">Your details stay private. No mailing list.</span>
+          </div>
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info">
+        <span class="eyebrow">Direct contact</span>
+        <h2 style="margin-top: 20px; margin-bottom: 32px;">Or reach us <em>directly.</em></h2>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Registered Office</h4>
+          <p>
+            <strong>Conexxion Tech India Pvt. Ltd.</strong><br>
+            No. 77/2, 78/2 Nachanahalli Palya<br>
+            Mysore, Karnataka 570008<br>
+            India
+          </p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Email us</h4>
+          <p>
+            For all enquiries:<br>
+            <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h4>Phone</h4>
+          <p>
+            <strong>+91 XXX-XXX-XXXX</strong><br>
+            Available Mon–Sat, 9:30 AM – 6:30 PM IST
+          </p>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Response time</h4>
+          <p>
+            We aim to respond to all enquiries inside <strong>one business day</strong>. For urgent project requests, mention "URGENT" in the subject line — these are routed directly to a director.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="container">
+    <div class="map-grid">
+      <div class="map-content">
+        <span class="eyebrow">Visit us</span>
+        <h2 style="margin-top: 20px;">Find us in <em>Mysore.</em></h2>
+        <p>
+          Our headquarters sits in Nachanahalli Palya, Mysore — close to the city's growing tech corridor and a 90-minute drive from the Bangalore ecosystem.
+        </p>
+        <p>
+          We welcome client visits by appointment. Coffee is on us; the conversation is on you.
+        </p>
+        <div style="margin-top: 24px;">
+          <a href="https://maps.google.com/?q=Nachanahalli+Palya+Mysore" target="_blank" class="btn btn-outline">Open in Google Maps →</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <div class="map-pin-pulse"></div>
+        <div class="map-pin">
+          <div class="map-pin-marker"></div>
+        </div>
+        <div class="map-label">
+          <strong>Conexxion Tech</strong>
+          77/2, 78/2 Nachanahalli Palya, Mysore
+        </div>
+        <div class="map-corner">12.2958° N, 76.6394° E</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="dept-section">
+  <div class="container">
+    <div style="max-width: 800px;">
+      <span class="eyebrow">Reach the right team</span>
+      <h2 style="margin-top: 20px;">Direct lines to <em>specific teams.</em></h2>
+    </div>
+
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div class="label">DEPARTMENT 01</div>
+        <h4>New Business &amp; Projects</h4>
+        <p>For new project enquiries, RFP responses, infrastructure scoping and partnership conversations.</p>
+        <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+      </div>
+      <div class="dept-card">
+        <div class="label">DEPARTMENT 02</div>
+        <h4>Hiring &amp; Talent</h4>
+        <p>For staffing requests, MSA discussions, hiring panels and rate-card conversations.</p>
+        <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+      </div>
+      <div class="dept-card">
+        <div class="label">DEPARTMENT 03</div>
+        <h4>Careers</h4>
+        <p>To join Conexxion as an engineer, project manager or recruiter — across our four practices.</p>
+        <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK FAQ -->
+<section class="quick-faq">
+  <div class="container">
+    <span class="eyebrow">Before you write</span>
+    <h2 style="margin-top: 20px;">A few <em>common questions</em>, quickly answered.</h2>
+
+    <div class="quick-faq-grid">
+      <div class="quick-faq-item">
+        <h4>How quickly will I get a response?</h4>
+        <p>Within one business day for general enquiries, often the same day for project requests received before 4 PM IST.</p>
+      </div>
+      <div class="quick-faq-item">
+        <h4>Do you work with clients outside India?</h4>
+        <p>Yes — we serve global system integrators and hyperscalers with India-based delivery, and selectively take on cross-border engagements.</p>
+      </div>
+      <div class="quick-faq-item">
+        <h4>Can I request an in-person meeting?</h4>
+        <p>Absolutely. We host visits at our Mysore office and can travel to client locations for kickoff or sensitive discussions.</p>
+      </div>
+      <div class="quick-faq-item">
+        <h4>Is there a minimum project size?</h4>
+        <p>No fixed minimum. We've delivered single-engineer placements and multi-crore site rollouts. We're happy to scope what fits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

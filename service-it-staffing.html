@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IT Staffing Services — Conexxion Tech India</title>
+<meta name="description" content="Specialized IT staffing services across contract, permanent and managed-team engagements. Engineering, infrastructure, cloud and security talent placed across India." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Service page styles */
+  .service-hero {
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%);
+    padding: 70px 0 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .service-hero h1 { margin: 20px 0 24px; }
+  .service-hero .lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+  .service-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .service-hero-img {
+    border-radius: 14px;
+    overflow: hidden;
+    height: 480px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .service-hero-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(13,59,102,0.4) 100%);
+  }
+  .service-hero-tag {
+    position: absolute;
+    bottom: 24px; left: 24px;
+    background: rgba(255,255,255,0.95);
+    color: var(--brand);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    z-index: 2;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Quick stats */
+  .quick-stats {
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .quick-stats .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .quick-stat {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid var(--line);
+  }
+  .quick-stat:last-child { border-right: none; }
+  .quick-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    color: var(--brand);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .quick-stat .label {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* Content sections */
+  .content-section { padding: 100px 0; }
+  .content-section.alt { background: var(--bg-cream); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .two-col h2 { margin-bottom: 24px; }
+  .two-col p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  /* Engagement models */
+  .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .engagement-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px 32px;
+    transition: all 0.3s;
+  }
+  .engagement-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand);
+  }
+  .engagement-card.featured {
+    background: var(--brand-deep);
+    color: #fff;
+    border-color: var(--brand-deep);
+    transform: scale(1.03);
+    box-shadow: var(--shadow-lg);
+  }
+  .engagement-card.featured h3 { color: #fff; }
+  .engagement-card.featured p { color: #cdd5e0; }
+  .engagement-card.featured .check { color: var(--accent); }
+  .engagement-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--accent-soft);
+    color: var(--brand);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .engagement-card.featured .engagement-tag {
+    background: var(--accent);
+    color: var(--brand-deep);
+  }
+  .engagement-card h3 { margin-bottom: 12px; }
+  .engagement-card p { font-size: 14.5px; line-height: 1.6; margin-bottom: 24px; }
+  .engagement-list {
+    list-style: none;
+    padding: 0;
+  }
+  .engagement-list li {
+    padding: 10px 0;
+    border-top: 1px solid rgba(229,225,214,0.4);
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .engagement-card.featured .engagement-list li { border-top-color: rgba(255,255,255,0.1); }
+  .engagement-list li:first-child { border-top: none; }
+  .check { color: var(--green); font-weight: bold; flex-shrink: 0; }
+
+  /* Specializations grid */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 50px;
+  }
+  .spec-card {
+    background: #fff;
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .spec-card:hover { background: var(--bg-cream); }
+  .spec-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    color: var(--brand);
+  }
+  .spec-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .spec-card p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .spec-roles {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--brand);
+    line-height: 1.6;
+  }
+
+  /* Process timeline */
+  .process-timeline {
+    margin-top: 60px;
+    position: relative;
+  }
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: var(--line);
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  .timeline-step { text-align: center; padding: 0 8px; }
+  .timeline-marker {
+    width: 60px; height: 60px;
+    background: #fff;
+    border: 2px solid var(--brand);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--brand);
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+  }
+  .timeline-step h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .timeline-step p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Comparison block */
+  .compare-box {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    padding: 40px;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .compare-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-them h4 { color: var(--ink-mute); }
+  .compare-us h4 { color: var(--brand); }
+  .compare-col ul { list-style: none; padding: 0; }
+  .compare-col ul li {
+    padding: 10px 0;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .compare-them ul li::before {
+    content: '✕';
+    color: #c44;
+    font-weight: bold;
+  }
+  .compare-us ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: bold;
+  }
+
+  /* FAQ */
+  .faq-grid {
+    margin-top: 50px;
+    max-width: 880px;
+  }
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .faq-a {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 960px) {
+    .service-hero { padding: 40px 0 60px; }
+    .service-hero-grid, .two-col, .compare-box {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .service-hero-img { height: 320px; }
+    .quick-stats .container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .quick-stat { border-right: none; }
+    .quick-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .engagement-grid, .spec-grid { grid-template-columns: 1fr; }
+    .engagement-card.featured { transform: none; }
+    .timeline-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .process-timeline::before { display: none; }
+    .content-section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#" class="active">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- SERVICE HERO -->
+<section class="service-hero">
+  <div class="container">
+    <div class="service-hero-grid">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span>/</span><a href="#">Services</a><span>/</span>IT Staffing
+        </div>
+        <span class="eyebrow">Service 01 — Talent &amp; Teams</span>
+        <h1>The right engineers, <em>placed faster</em> than your competition is still screening résumés.</h1>
+        <p class="lede">
+          We build infrastructure-grade engineering teams — contract, permanent or managed — for organizations that don't have time for résumé farms or generic recruiters. Specialized in cloud, telecom, security, SAP and core platform roles.
+        </p>
+        <div class="service-hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Discuss your hiring need →</a>
+          <a href="#engagement" class="btn btn-outline btn-lg">See engagement models</a>
+        </div>
+      </div>
+      <div class="service-hero-img">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80" alt="IT Staffing professionals" />
+        <div class="service-hero-tag">⚡ Avg. 14-day time-to-shortlist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="quick-stats">
+  <div class="container">
+    <div class="quick-stat">
+      <div class="num">14d</div>
+      <div class="label">Avg. shortlist time</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">200+</div>
+      <div class="label">Engineers placed</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">88%</div>
+      <div class="label">Offer-acceptance rate</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">93%</div>
+      <div class="label">12-month retention</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="content-section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Our staffing practice</span>
+        <h2 style="margin-top: 20px;">Engineers <em>vetted</em> the way engineers vet engineers.</h2>
+      </div>
+      <div>
+        <p>
+          Most staffing firms throw résumés at a job description and hope something sticks. We don't. Our recruiters work alongside senior engineers from our delivery practice — telecom, data center and cloud — so the people we shortlist actually understand the work.
+        </p>
+        <p>
+          That means a network engineer is interviewed by someone who has lit up RAN sites, a Kubernetes hire is evaluated by someone who has run production clusters, and an SAP Basis profile is screened by a real Basis architect — not a keyword bot.
+        </p>
+        <p>
+          The result: shorter shortlists, fewer false positives, and engineers who clear your panel on the first or second round, not the fifth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODELS -->
+<section class="content-section alt" id="engagement">
+  <div class="container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="eyebrow">Engagement models</span>
+      <h2 style="margin-top: 20px;">Three ways to work with us — pick the one that fits your <em>commercial reality.</em></h2>
+    </div>
+
+    <div class="engagement-grid">
+      <div class="engagement-card">
+        <span class="engagement-tag">Model 01</span>
+        <h3>Contract Staffing</h3>
+        <p>Hourly or daily-rate engineers for fixed-duration projects. We handle compliance, payroll, and ramp-down.</p>
+        <ul class="engagement-list">
+          <li><span class="check">✓</span> 1–24 month contracts</li>
+          <li><span class="check">✓</span> Replacement guarantee</li>
+          <li><span class="check">✓</span> Statutory compliance handled</li>
+          <li><span class="check">✓</span> Weekly performance reviews</li>
+          <li><span class="check">✓</span> Rate cards aligned to NASSCOM</li>
+        </ul>
+      </div>
+
+      <div class="engagement-card featured">
+        <span class="engagement-tag">Model 02 · Most Popular</span>
+        <h3>Permanent Placement</h3>
+        <p>Full-time hires onto your payroll. Retainer-based, with a 90-day replacement guarantee on every offer.</p>
+        <ul class="engagement-list">
+          <li><span class="check">✓</span> Director-level &amp; specialist roles</li>
+          <li><span class="check">✓</span> 90-day replacement guarantee</li>
+          <li><span class="check">✓</span> Pre-vetted technical assessments</li>
+          <li><span class="check">✓</span> Reference and background verification</li>
+          <li><span class="check">✓</span> Compensation benchmarking included</li>
+        </ul>
+      </div>
+
+      <div class="engagement-card">
+        <span class="engagement-tag">Model 03</span>
+        <h3>Managed Capacity</h3>
+        <p>A dedicated pod of engineers under our management, embedded with your team — output-based commercial.</p>
+        <ul class="engagement-list">
+          <li><span class="check">✓</span> 4–40 engineer pods</li>
+          <li><span class="check">✓</span> Dedicated delivery manager</li>
+          <li><span class="check">✓</span> Output / SLA-based commercials</li>
+          <li><span class="check">✓</span> Backfill within 5 working days</li>
+          <li><span class="check">✓</span> Quarterly capability uplifts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALIZATIONS -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Specializations</span>
+        <h2 style="margin-top: 20px;">We staff the roles <em>generalist firms struggle</em> to fill.</h2>
+      </div>
+      <p>
+        Our recruiters are organized around the four practice areas where Conexxion delivers — which means deep, current networks in each domain instead of a single all-purpose pipeline.
+      </p>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h4>Cloud &amp; Platform</h4>
+        <p>SREs, platform engineers and architects fluent in production-grade cloud operations.</p>
+        <div class="spec-roles">AWS / Azure Architects · K8s SREs · DevOps Leads · Terraform · FinOps</div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h4>Telecom &amp; Networks</h4>
+        <p>RF, RAN, transport and core engineers — including 5G specialists and OSS/BSS profiles.</p>
+        <div class="spec-roles">RF Engineers · RAN Specialists · OSS/BSS · Network Architects · Field Ops</div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h4>Data Center &amp; Infra</h4>
+        <p>Facility engineers, structured-cabling specialists, DCIM and storage administrators.</p>
+        <div class="spec-roles">DC Architects · Cabling Leads · DCIM Admins · Storage Engineers · Power &amp; Cooling</div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Cybersecurity</h4>
+        <p>Defensive and offensive security talent — from SOC analysts to CISO-track architects.</p>
+        <div class="spec-roles">SOC Analysts · IAM · Pentesters · GRC · Cloud Security Architects</div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h4>Software Engineering</h4>
+        <p>Backend, full-stack and data engineers — Java, Python, Go, Node and modern data stacks.</p>
+        <div class="spec-roles">Backend · Data Engineers · Full-stack · QA Automation · Mobile</div>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 9h6v6H9z"/></svg>
+        </div>
+        <h4>Enterprise Apps</h4>
+        <p>SAP, Oracle and ServiceNow specialists — functional consultants through to Basis architects.</p>
+        <div class="spec-roles">SAP S/4HANA · Oracle Apps · ServiceNow · Salesforce · Workday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="content-section alt">
+  <div class="container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="eyebrow">Our process</span>
+      <h2 style="margin-top: 20px;">Five steps from <em>requirement</em> to onboarded engineer.</h2>
+    </div>
+
+    <div class="process-timeline">
+      <div class="timeline-grid">
+        <div class="timeline-step">
+          <div class="timeline-marker">01</div>
+          <h4>Intake</h4>
+          <p>30-min call to scope role, must-haves, deal-breakers and target compensation.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-marker">02</div>
+          <h4>Sourcing</h4>
+          <p>Multi-channel sourcing across networks, communities and our active bench.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-marker">03</div>
+          <h4>Vetting</h4>
+          <p>Technical screening by a senior practitioner, plus references and background checks.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-marker">04</div>
+          <h4>Shortlist</h4>
+          <p>3–5 truly qualified candidates with structured profiles &amp; assessment notes.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-marker">05</div>
+          <h4>Onboard</h4>
+          <p>Offer roll-out, joining support, and 90-day check-ins to ensure stickiness.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">The Conexxion difference</span>
+        <h2 style="margin-top: 20px;">Why teams switch to us <em>after one frustrating quarter</em> with a generic firm.</h2>
+      </div>
+      <p>
+        We're not the cheapest. We are the firm you call when the cheap option just cost you four months and an open headcount you can't close.
+      </p>
+    </div>
+
+    <div class="compare-box">
+      <div class="compare-col compare-them">
+        <h4>Typical Staffing Firm</h4>
+        <ul>
+          <li>Recruiters with no domain background</li>
+          <li>Keyword-matched résumés in bulk</li>
+          <li>30–40% rejection at first technical round</li>
+          <li>Replacement only on outright dropouts</li>
+          <li>Generic compensation benchmarks</li>
+          <li>Account managers, not delivery owners</li>
+        </ul>
+      </div>
+      <div class="compare-col compare-us">
+        <h4>Conexxion Tech</h4>
+        <ul>
+          <li>Recruiters paired with senior practitioners</li>
+          <li>Curated 3–5 candidate shortlists</li>
+          <li>Technical pass-through above 70%</li>
+          <li>90-day replacement on permanent placements</li>
+          <li>Live, role-specific compensation data</li>
+          <li>Named delivery manager on every engagement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">FAQ</span>
+        <h2 style="margin-top: 20px;">Things <em>clients ask</em> before signing the MSA.</h2>
+      </div>
+      <p>
+        If your question isn't answered here, write to us — we'll respond within one business day with a real human, not a chatbot.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">What's your average time-to-shortlist for niche roles?</div>
+        <div class="faq-a">For roles in our four core practice areas, we typically deliver a 3–5 candidate shortlist within 10–14 working days. Highly niche roles (e.g., specific 5G core skill sets, SAP S/4HANA Basis, OT security) can take 18–25 days.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you handle compliance and payroll for contract engineers?</div>
+        <div class="faq-a">Yes. All contract staff are on Conexxion's payroll with full statutory compliance — PF, ESI, gratuity, professional tax — and are covered by group health insurance. You receive a single consolidated invoice each month.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's your replacement policy on permanent hires?</div>
+        <div class="faq-a">We offer a 90-day replacement guarantee on permanent placements at no additional fee — covering both performance issues identified by you and unilateral exits by the candidate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you scale a managed capacity pod up or down quickly?</div>
+        <div class="faq-a">Yes. Our standard SLA is to ramp up new pod members within 10 working days and ramp down with 30 days' notice. Larger spikes (10+ engineers) require 4–6 weeks of lead time.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where are your engineers located?</div>
+        <div class="faq-a">Our active network covers Bangalore, Mysore, Chennai, Hyderabad, Pune, Mumbai and the NCR region, with growing depth in Coimbatore, Kochi and Ahmedabad. We support both on-site and remote engagement models.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Need engineers who can <em>actually do the work?</em></h2>
+      <p>Tell us the role, the timeline, and the deal-breakers. We'll come back with a sourcing plan and a realistic shortlist date — usually inside a business day.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Talk to a recruiter →</a>
+      <a href="mailto:rajnswiss@gmail.com" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">Email us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social">
+          <a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

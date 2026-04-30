@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog & Insights — Conexxion Tech India</title>
+<meta name="description" content="Insights from Conexxion Tech engineers and project managers — practical writing on IT staffing, telecom rollouts, data center delivery and cloud migration." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .blog-hero {
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%);
+    padding: 70px 0 50px;
+  }
+  .blog-hero h1 { max-width: 900px; margin: 20px 0 24px; }
+  .blog-hero .lede {
+    max-width: 720px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+    background: #fff;
+    position: sticky;
+    top: 75px;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+  .filter-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .filter-pill {
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .filter-pill:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+  .filter-pill.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+  }
+  .filter-search {
+    display: flex;
+    align-items: center;
+    background: var(--bg-cream);
+    padding: 8px 14px;
+    border-radius: 20px;
+    gap: 8px;
+    min-width: 240px;
+  }
+  .filter-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    flex: 1;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .filter-search input::placeholder { color: var(--ink-mute); }
+
+  /* Featured post */
+  .featured-section {
+    padding: 70px 0 40px;
+  }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+  }
+  .featured-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+  .featured-img {
+    height: 460px;
+    overflow: hidden;
+    position: relative;
+  }
+  .featured-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .featured-card:hover .featured-img img { transform: scale(1.03); }
+  .featured-body {
+    padding: 40px 60px 40px 0;
+  }
+  .featured-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--accent);
+    color: var(--brand-deep);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .featured-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .featured-meta span { color: var(--ink-mute); }
+  .featured-card h2 {
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .featured-card p {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .featured-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .featured-author .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+  }
+  .featured-author .info {
+    font-size: 14px;
+  }
+  .featured-author .info strong { display: block; color: var(--ink); }
+  .featured-author .info span { color: var(--ink-mute); font-size: 12px; }
+
+  /* Posts grid */
+  .posts-section { padding: 50px 0 80px; }
+  .posts-section h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .post-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .post-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--brand);
+  }
+  .post-img {
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .post-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .post-card:hover .post-img img { transform: scale(1.05); }
+  .post-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .post-cat {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--brand);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    align-self: flex-start;
+  }
+  .post-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .post-excerpt {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .post-foot {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Newsletter */
+  .newsletter-section {
+    background: var(--brand-deep);
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .newsletter-section h2 { color: #fff; margin-bottom: 16px; }
+  .newsletter-section h2 em { color: var(--accent); }
+  .newsletter-section p { color: #cdd5e0; font-size: 16px; line-height: 1.65; }
+  .newsletter-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 28px;
+    border-radius: 12px;
+  }
+  .newsletter-form-row {
+    display: flex;
+    gap: 8px;
+  }
+  .newsletter-form input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  .newsletter-form input::placeholder { color: #95a0b2; }
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .newsletter-meta {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #95a0b2;
+  }
+
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 60px;
+  }
+  .pagination a, .pagination span {
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    transition: all 0.2s;
+    background: #fff;
+  }
+  .pagination a:hover {
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+  .pagination .current {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+  }
+
+  @media (max-width: 960px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-img { height: 280px; }
+    .featured-body { padding: 32px; }
+    .posts-grid { grid-template-columns: 1fr 1fr; }
+    .newsletter-grid { grid-template-columns: 1fr; gap: 32px; }
+    .filter-bar { position: static; }
+    .filter-bar .container { gap: 16px; }
+  }
+  @media (max-width: 600px) {
+    .posts-grid { grid-template-columns: 1fr; }
+    .newsletter-form-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a><a href="#">Investor Relations</a><a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a><span>/</span>Blog &amp; Insights
+    </div>
+    <span class="eyebrow">Blog · Notes from the field</span>
+    <h1>Practical writing from <em>engineers and project managers</em> — not marketers.</h1>
+    <p class="lede">
+      Short, useful posts on the work we actually do — telecom rollouts, data center migrations, cloud cost discipline, and hiring engineers who can hold their own. The things we wished we'd known before kickoff.
+    </p>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-pills">
+      <button class="filter-pill active">All Topics</button>
+      <button class="filter-pill">IT Staffing</button>
+      <button class="filter-pill">Telecom</button>
+      <button class="filter-pill">Data Center</button>
+      <button class="filter-pill">Cloud</button>
+      <button class="filter-pill">Industry</button>
+    </div>
+    <div class="filter-search">
+      <span>🔍</span>
+      <input type="text" placeholder="Search insights…">
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED -->
+<section class="featured-section">
+  <div class="container">
+    <div class="featured-card">
+      <div class="featured-img">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" alt="Featured post">
+      </div>
+      <div class="featured-body">
+        <span class="featured-tag">⭐ Featured · Long Read</span>
+        <div class="featured-meta">
+          DATA CENTER<span>·</span>14 MIN READ<span>·</span>APR 2026
+        </div>
+        <h2>How we ran a 320-server migration across two weekends — and what the runbook actually looked like.</h2>
+        <p>
+          A detailed walk-through of a recent two-site data center consolidation: how we scoped it, why we waved it the way we did, and the four moments where we very nearly had to roll back. Includes the real cutover checklist we used.
+        </p>
+        <div class="featured-author">
+          <div class="avatar">SR</div>
+          <div class="info">
+            <strong>Senthilkumar Ragunandhan</strong>
+            <span>Director, Technology · Conexxion Tech</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST POSTS -->
+<section class="posts-section">
+  <div class="container">
+    <h3>Latest Insights</h3>
+
+    <div class="posts-grid">
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">IT Staffing</span>
+          <h4>Why "résumé matching" is failing your engineering hires</h4>
+          <p class="post-excerpt">Keyword screening misses the engineers you actually want. A short note on what we've learned about staffing real systems work.</p>
+          <div class="post-foot"><span>5 MIN READ</span><span>APR 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Telecom</span>
+          <h4>5G in tier-2 India: what the playbook actually looks like</h4>
+          <p class="post-excerpt">Permits, power, fiber back-haul and crew logistics — what a realistic 5G deployment timeline includes outside metros.</p>
+          <div class="post-foot"><span>7 MIN READ</span><span>APR 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Cloud</span>
+          <h4>The 7 hidden costs of a "lift-and-shift" cloud migration</h4>
+          <p class="post-excerpt">Egress, idle compute, backup sprawl — what teams discover after the celebration emails go out.</p>
+          <div class="post-foot"><span>6 MIN READ</span><span>MAR 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Telecom</span>
+          <h4>Field crew safety on tower works: the boring rules that prevent expensive incidents</h4>
+          <p class="post-excerpt">A walkthrough of our toolbox-talk discipline, JSAs, climber-safety protocols and why we have zero LTI across 1,200+ sites.</p>
+          <div class="post-foot"><span>8 MIN READ</span><span>MAR 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Data Center</span>
+          <h4>What good cabling documentation looks like — and why it pays off in year three</h4>
+          <p class="post-excerpt">Rack elevations, cable schedules, port maps. The deliverables you wish your previous DC vendor had handed over.</p>
+          <div class="post-foot"><span>9 MIN READ</span><span>MAR 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">IT Staffing</span>
+          <h4>Five interview questions we ask every senior infrastructure engineer</h4>
+          <p class="post-excerpt">The questions that separate engineers who've maintained production systems from those who've only built greenfield demos.</p>
+          <div class="post-foot"><span>4 MIN READ</span><span>FEB 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Cloud</span>
+          <h4>Building an internal developer platform that engineers actually use</h4>
+          <p class="post-excerpt">Why most "platforms" become abandoned wikis — and how to design self-service that's faster than the old way.</p>
+          <div class="post-foot"><span>10 MIN READ</span><span>FEB 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Industry</span>
+          <h4>Why we built our infrastructure firm in Mysore, not Bangalore</h4>
+          <p class="post-excerpt">Tier-2 cities offer something tier-1 can't: focus, retention and operating discipline. A note on choosing your HQ.</p>
+          <div class="post-foot"><span>6 MIN READ</span><span>FEB 2026</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="post-card">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=900&q=80" alt="" /></div>
+        <div class="post-body">
+          <span class="post-cat">Telecom</span>
+          <h4>How to take over a stalled telecom rollout — without the new vendor blame game</h4>
+          <p class="post-excerpt">A two-week takeover audit framework: what to inspect, what to re-baseline, and what to leave alone.</p>
+          <div class="post-foot"><span>7 MIN READ</span><span>JAN 2026</span></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <span class="current">1</span>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <span>…</span>
+      <a href="#">8</a>
+      <a href="#">Next →</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-grid">
+      <div>
+        <span class="eyebrow" style="color: var(--accent);">Newsletter</span>
+        <h2 style="margin-top: 20px;">A short, <em>monthly</em> note from the field.</h2>
+        <p>
+          Once a month, a short email with our newest writing — plus the occasional unpublished note on something that worked, broke, or surprised us. No marketing, no spam, easy unsubscribe.
+        </p>
+      </div>
+      <div class="newsletter-form">
+        <div class="newsletter-form-row">
+          <input type="email" placeholder="your.email@company.com">
+          <button class="btn btn-accent">Subscribe</button>
+        </div>
+        <div class="newsletter-meta">No spam. One email per month. Unsubscribe in one click.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

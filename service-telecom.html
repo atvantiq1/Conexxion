@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Telecom Services — Conexxion Tech India</title>
+<meta name="description" content="End-to-end telecom services: 4G/5G site engineering, fiber and FTTx rollout, RAN deployment and managed network services for operators and ISPs across India." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Same service page styles as IT staffing */
+  .service-hero { background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%); padding: 70px 0 90px; position: relative; overflow: hidden; }
+  .service-hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .service-hero h1 { margin: 20px 0 24px; }
+  .service-hero .lede { font-size: 19px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 32px; max-width: 560px; }
+  .service-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .service-hero-img { border-radius: 14px; overflow: hidden; height: 480px; box-shadow: var(--shadow-lg); position: relative; }
+  .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .service-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(13,59,102,0.4) 100%); }
+  .service-hero-tag { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,0.95); color: var(--brand); padding: 12px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; z-index: 2; box-shadow: var(--shadow-sm); }
+
+  .quick-stats { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px 0; }
+  .quick-stats .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .quick-stat { text-align: center; padding: 0 20px; border-right: 1px solid var(--line); }
+  .quick-stat:last-child { border-right: none; }
+  .quick-stat .num { font-family: 'Fraunces', serif; font-size: 42px; color: var(--brand); line-height: 1; margin-bottom: 8px; font-weight: 500; }
+  .quick-stat .label { font-size: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .content-section { padding: 100px 0; }
+  .content-section.alt { background: var(--bg-cream); }
+  .two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .two-col h2 { margin-bottom: 24px; }
+  .two-col p { font-size: 16.5px; line-height: 1.7; margin-bottom: 18px; }
+
+  .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 50px; align-items: end; }
+  .section-intro h2 { max-width: 540px; }
+  .section-intro p { font-size: 17px; line-height: 1.65; max-width: 480px; }
+
+  /* Capabilities list */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .capability-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .capability-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+  .capability-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: 0.08em;
+  }
+  .capability-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .capability-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .capability-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .capability-card ul li {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    padding: 6px 0;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    gap: 8px;
+  }
+  .capability-card ul li::before {
+    content: '→';
+    color: var(--brand);
+    font-weight: bold;
+  }
+
+  /* Image+content blocks */
+  .feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .feature-block:last-child { margin-bottom: 0; }
+  .feature-block.reverse { direction: rtl; }
+  .feature-block.reverse > * { direction: ltr; }
+  .feature-block-img {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 420px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+  }
+  .feature-block-img img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-block-content h3 { margin-bottom: 18px; }
+  .feature-block-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .feature-block-content .pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--accent-soft);
+    color: var(--brand);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .feature-block-content ul {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .feature-block-content ul li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .feature-block-content ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  /* Coverage map */
+  .coverage-section {
+    padding: 100px 0;
+    background: var(--brand-deep);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .coverage-section h2 { color: #fff; margin-bottom: 24px; }
+  .coverage-section h2 em { color: var(--accent); }
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .coverage-section p { color: #cdd5e0; font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .coverage-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #1a2e47;
+    border: 1px solid #1a2e47;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .coverage-stat {
+    background: var(--brand-deep);
+    padding: 32px;
+  }
+  .coverage-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .coverage-stat .label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .coverage-stat .sub {
+    color: #95a0b2;
+    font-size: 12px;
+  }
+
+  /* Case study */
+  .case-study {
+    background: #fff;
+    border-radius: 14px;
+    padding: 50px;
+    border: 1px solid var(--line);
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .case-study .case-img {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 320px;
+  }
+  .case-study .case-img img { width: 100%; height: 100%; object-fit: cover; }
+  .case-study .case-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .case-study h3 { font-size: 28px; margin-bottom: 16px; }
+  .case-study p { font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; }
+  .case-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 20px;
+  }
+  .case-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .case-stat .label {
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 6px;
+  }
+
+  /* FAQ */
+  .faq-grid { margin-top: 50px; max-width: 880px; }
+  .faq-item { border-top: 1px solid var(--line); padding: 24px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); margin-bottom: 10px; font-weight: 500; }
+  .faq-a { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); }
+
+  @media (max-width: 960px) {
+    .service-hero { padding: 40px 0 60px; }
+    .service-hero-grid, .two-col, .section-intro, .feature-block, .case-study, .coverage-grid {
+      grid-template-columns: 1fr; gap: 40px;
+    }
+    .feature-block.reverse { direction: ltr; }
+    .service-hero-img, .feature-block-img { height: 320px; }
+    .quick-stats .container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .quick-stat { border-right: none; }
+    .quick-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .capabilities-grid { grid-template-columns: 1fr; }
+    .case-study { padding: 30px; }
+    .case-stats-row { grid-template-columns: 1fr; gap: 12px; }
+    .content-section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#" class="active">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- SERVICE HERO -->
+<section class="service-hero">
+  <div class="container">
+    <div class="service-hero-grid">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span>/</span><a href="#">Services</a><span>/</span>Telecom
+        </div>
+        <span class="eyebrow">Service 02 — Network Infrastructure</span>
+        <h1>Telecom rollouts that <em>actually hit</em> their go-live dates.</h1>
+        <p class="lede">
+          End-to-end telecom services for operators, ISPs and tower companies — 4G/5G site engineering, FTTx and last-mile fiber, RAN deployment, OSS/BSS integration and 24×7 managed network operations.
+        </p>
+        <div class="service-hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Discuss your rollout →</a>
+          <a href="#capabilities" class="btn btn-outline btn-lg">View capabilities</a>
+        </div>
+      </div>
+      <div class="service-hero-img">
+        <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1200&q=80" alt="Telecom infrastructure" />
+        <div class="service-hero-tag">📡 1,200+ sites deployed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="quick-stats">
+  <div class="container">
+    <div class="quick-stat">
+      <div class="num">1.2K</div>
+      <div class="label">Sites deployed</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">28</div>
+      <div class="label">States covered</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">14d</div>
+      <div class="label">Avg. site delivery</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">99.9%</div>
+      <div class="label">First-time-right rate</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="content-section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Our telecom practice</span>
+        <h2 style="margin-top: 20px;">From <em>survey</em> to <em>SLA</em> — one accountable team.</h2>
+      </div>
+      <div>
+        <p>
+          Telecom rollouts fail in the seams — between RF and civil, between civil and electrical, between handover and operations. We've spent ten years closing those seams. Our crews are organized as integrated pods that own the entire site lifecycle: survey, design, civil, installation, integration, optimization and handover.
+        </p>
+        <p>
+          That means one project manager, one weekly tracker, one accountable signature on the acceptance certificate — and far fewer of the "the other vendor was supposed to do that" conversations that turn 90-day rollouts into 9-month rollouts.
+        </p>
+        <p>
+          We work with Tier-1 operators, regional ISPs, infrastructure providers and OEM system integrators on engagements ranging from 50 to 5,000 sites.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="content-section alt" id="capabilities">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Capabilities</span>
+        <h2 style="margin-top: 20px;">Six service lines, <em>tightly coupled</em> for fast delivery.</h2>
+      </div>
+      <p>
+        Each capability is delivered by certified engineers using OEM-aligned methods. We can plug in at any point in your rollout, or own it end-to-end.
+      </p>
+    </div>
+
+    <div class="capabilities-grid">
+      <div class="capability-card">
+        <div class="num">CAPABILITY 01</div>
+        <h4>4G / 5G Site Engineering</h4>
+        <p>Greenfield and brownfield site delivery — RF survey through optimization handover.</p>
+        <ul>
+          <li>Site surveys &amp; TSSR</li>
+          <li>Civil &amp; tower works</li>
+          <li>Power &amp; earthing systems</li>
+          <li>Equipment installation &amp; commissioning</li>
+        </ul>
+      </div>
+      <div class="capability-card">
+        <div class="num">CAPABILITY 02</div>
+        <h4>RAN Deployment &amp; Optimization</h4>
+        <p>Macro, small-cell and DAS deployment with KPI-driven optimization.</p>
+        <ul>
+          <li>RAN integration &amp; SAT</li>
+          <li>Drive testing &amp; benchmarking</li>
+          <li>Cluster &amp; cell-level optimization</li>
+          <li>Pre-launch &amp; post-launch tuning</li>
+        </ul>
+      </div>
+      <div class="capability-card">
+        <div class="num">CAPABILITY 03</div>
+        <h4>Fiber &amp; FTTx Rollout</h4>
+        <p>Last-mile and back-haul fiber networks for ISPs and operators.</p>
+        <ul>
+          <li>OFC route survey &amp; design</li>
+          <li>Trenching &amp; HDD execution</li>
+          <li>Splicing, OTDR &amp; testing</li>
+          <li>GPON / EPON commissioning</li>
+        </ul>
+      </div>
+      <div class="capability-card">
+        <div class="num">CAPABILITY 04</div>
+        <h4>Microwave &amp; Transmission</h4>
+        <p>Point-to-point and point-to-multipoint MW links and transmission networks.</p>
+        <ul>
+          <li>Path profile &amp; LOS surveys</li>
+          <li>MW installation &amp; alignment</li>
+          <li>IP/MPLS transmission</li>
+          <li>Network performance audits</li>
+        </ul>
+      </div>
+      <div class="capability-card">
+        <div class="num">CAPABILITY 05</div>
+        <h4>OSS / BSS Integration</h4>
+        <p>Operational and business support system integration for service launch.</p>
+        <ul>
+          <li>Inventory &amp; fault management</li>
+          <li>Performance management tools</li>
+          <li>Provisioning &amp; activation flows</li>
+          <li>Charging &amp; billing integration</li>
+        </ul>
+      </div>
+      <div class="capability-card">
+        <div class="num">CAPABILITY 06</div>
+        <h4>Managed Network Services</h4>
+        <p>24×7 NOC, field operations and SLA-backed network management.</p>
+        <ul>
+          <li>L1 / L2 / L3 NOC support</li>
+          <li>Preventive &amp; reactive maintenance</li>
+          <li>Spare-parts management</li>
+          <li>SLA reporting &amp; governance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BLOCKS -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">How we work</span>
+        <h2 style="margin-top: 20px;">Field execution that <em>respects engineering reality.</em></h2>
+      </div>
+      <p>
+        Telecom is field work. Software discipline meets civil discipline meets crew safety. Here's how we run our practice.
+      </p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=900&q=80" alt="Network engineers" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">5G Rollout · Tier-1 Operator</span>
+        <h3>5G greenfield deployment with crew-level accountability.</h3>
+        <p>
+          Each site is owned by a five-person pod — RF lead, civil lead, electrical lead, integrator and a quality auditor — with a daily stand-up against a shared tracker. No site is closed until all five sign off, and every defect carries the name of the engineer responsible for fix.
+        </p>
+        <ul>
+          <li>OEM-certified crews on 5G NSA &amp; SA</li>
+          <li>Daily KPIs published to client dashboards</li>
+          <li>Quality auditor independent of execution chain</li>
+          <li>Site-acceptance certificate signed inside 48 hours of integration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block reverse">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Fiber optic infrastructure" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Fiber / FTTx</span>
+        <h3>Last-mile fiber crews trained for tier-2 and tier-3 cities.</h3>
+        <p>
+          Our FTTx crews specialize in the unglamorous, hard-to-execute work that defines real broadband coverage outside metros — narrow lanes, mixed permissions, legacy ducts and unpredictable ground conditions. We bring the local knowledge and the OFC discipline together.
+        </p>
+        <ul>
+          <li>OFC route survey with permission-readiness scoring</li>
+          <li>HDD &amp; open trenching crews on call</li>
+          <li>OTDR-tested splicing with traceable lot numbers</li>
+          <li>Standard 14-day site-to-site delivery, faster on plan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80" alt="Network operations center" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Managed Services</span>
+        <h3>24×7 NOC and field-operations as a single accountable layer.</h3>
+        <p>
+          Once your network is live, we run it. Our managed services pair a tiered NOC with dispatched field engineers across India — with a clear escalation matrix, SLA scorecard and quarterly business reviews chaired by our director-level practice leads.
+        </p>
+        <ul>
+          <li>Multi-vendor NOC capability across major OEMs</li>
+          <li>Field engineer SLAs as tight as 4-hour onsite</li>
+          <li>Spare-parts logistics across 100+ Indian cities</li>
+          <li>Monthly SLA reports — no creative rounding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE -->
+<section class="coverage-section">
+  <div class="container">
+    <div class="coverage-grid">
+      <div>
+        <span class="eyebrow" style="color: var(--accent);">Coverage</span>
+        <h2 style="margin-top: 20px;">Pan-India presence, <em>tier-1 to tier-3</em>.</h2>
+        <p>
+          Headquartered in Karnataka with a delivery footprint across South, West and Central India — and rapidly expanding into the North-East and Northern circles. Our crews are anchored in 14 hub cities with rapid mobilization to surrounding districts.
+        </p>
+        <p>
+          Whether your rollout is concentrated in a single state or fragmented across the country, we can mobilize a delivery pod inside one working week.
+        </p>
+        <a href="contact.html" class="btn btn-accent btn-lg">Discuss your rollout →</a>
+      </div>
+      <div class="coverage-stats">
+        <div class="coverage-stat">
+          <div class="num">28</div>
+          <div class="label">States &amp; UTs</div>
+          <div class="sub">across all telecom circles</div>
+        </div>
+        <div class="coverage-stat">
+          <div class="num">14</div>
+          <div class="label">Operational hubs</div>
+          <div class="sub">tier-1 &amp; tier-2 cities</div>
+        </div>
+        <div class="coverage-stat">
+          <div class="num">600+</div>
+          <div class="label">Field engineers</div>
+          <div class="sub">on active rolls</div>
+        </div>
+        <div class="coverage-stat">
+          <div class="num">5d</div>
+          <div class="label">Mobilization SLA</div>
+          <div class="sub">to net-new geographies</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Case in point</span>
+        <h2 style="margin-top: 20px;">Karnataka 5G rollout — <em>three weeks ahead</em> of plan.</h2>
+      </div>
+      <p>
+        A Tier-1 operator engaged us for accelerated 5G NSA rollout across two Karnataka clusters. We delivered ahead of schedule and stayed on through the optimization window.
+      </p>
+    </div>
+
+    <div class="case-study">
+      <div class="case-img">
+        <img src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=900&q=80" alt="5G rollout" />
+      </div>
+      <div>
+        <div class="case-tag">CASE STUDY · TIER-1 OPERATOR</div>
+        <h3>From 0 to 184 sites in 14 weeks — including monsoon.</h3>
+        <p>
+          The original plan called for 17 weeks across two clusters in Mysore and Mangalore districts. By restructuring crews into integrated pods and front-loading civil work before the monsoon window, we compressed delivery to 14 weeks with zero safety incidents and a 99.4% first-time-right integration rate.
+        </p>
+        <div class="case-stats-row">
+          <div class="case-stat">
+            <div class="num">184</div>
+            <div class="label">Sites delivered</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">-21%</div>
+            <div class="label">vs. plan duration</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">99.4%</div>
+            <div class="label">First-time-right</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">FAQ</span>
+        <h2 style="margin-top: 20px;">Questions <em>operators ask</em> before signing the SOW.</h2>
+      </div>
+      <p>
+        If your question isn't here, write to us — we'll respond inside one business day with a real engineer's answer.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Which OEM ecosystems do your crews support?</div>
+        <div class="faq-a">Our engineers are certified across major OEMs including Nokia, Ericsson, Samsung and ZTE for RAN, plus Cisco, Juniper and Huawei for transport. Specific OEM coverage is mapped at the kickoff call to align with your existing vendor stack.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you handle EPC-style turnkey rollouts?</div>
+        <div class="faq-a">Yes. We deliver full turnkey scopes including civil, electrical, tower works, equipment installation, integration and acceptance — with a single project manager and a single commercial owner. Most of our 100+ site engagements are turnkey.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's your typical site-acceptance timeline?</div>
+        <div class="faq-a">For a standard greenfield 4G/5G macro site with all permissions in place, we deliver from kickoff to integration in 14–18 working days. Brownfield upgrades typically run 5–8 working days. Fiber rollouts are quoted per kilometre and per route complexity.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do you handle safety and compliance on tower works?</div>
+        <div class="faq-a">All tower crews carry valid working-at-height certifications, climber-safety harnesses, and rescue training. Each site has a designated safety officer, daily toolbox talks, and a documented JSA. We have completed 1,200+ sites with zero lost-time injuries.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you take over a stalled rollout from another vendor?</div>
+        <div class="faq-a">Yes — and we frequently do. Our intake process for distressed rollouts includes an audit of completed work, a defect-and-rework register, and a re-baselined delivery plan inside two weeks of takeover.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Have a rollout that <em>needs to happen?</em></h2>
+      <p>Whether it's 50 sites or 5,000, we'll come back inside one business day with a realistic delivery plan and a named project lead.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Talk to a project lead →</a>
+      <a href="mailto:rajnswiss@gmail.com" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">Email us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social">
+          <a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Us — Conexxion Tech India</title>
+<meta name="description" content="Conexxion Tech India is a Mysore-based infrastructure and talent partner founded in 2015. Promoter-led, with four directors and a decade of delivery." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* About hero */
+  .about-hero {
+    padding: 80px 0 60px;
+    background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero h1 { max-width: 900px; margin: 20px 0 28px; }
+  .about-hero .lede {
+    max-width: 720px;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Hero photos collage */
+  .about-collage {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 60px;
+    height: 380px;
+  }
+  .about-collage > div {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .about-collage img { width: 100%; height: 100%; object-fit: cover; }
+  .collage-tall {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+  .collage-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    height: 460px;
+  }
+  .collage-grid > div { border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
+  .collage-grid img { width: 100%; height: 100%; object-fit: cover; }
+  .collage-1 { grid-row: 1 / span 2; }
+  .collage-3 { grid-row: 1 / span 2; }
+
+  /* Story section */
+  .story-section { padding: 100px 0; }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .story-grid h2 { margin-bottom: 24px; }
+  .story-grid p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+  .story-grid p:first-of-type::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    float: left;
+    line-height: 0.9;
+    margin: 8px 12px 0 0;
+    color: var(--brand);
+    font-weight: 500;
+  }
+
+  /* Mission */
+  .mission-section {
+    background: var(--brand-deep);
+    color: #fff;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .mission-section .container { position: relative; }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .mission-section h2 { color: #fff; margin-bottom: 0; }
+  .mission-section h2 em { color: var(--accent); }
+  .mission-content {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.45;
+    color: #cdd5e0;
+    font-weight: 300;
+  }
+  .mission-content em { color: var(--accent); }
+
+  /* Values */
+  .values-section { padding: 100px 0; background: var(--bg-cream); }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 60px;
+  }
+  .value-card {
+    background: #fff;
+    padding: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    transition: all 0.3s;
+  }
+  .value-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .value-num {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .value-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .value-card p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  /* Leadership */
+  .leadership-section { padding: 100px 0; }
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+  .leader-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px;
+    transition: all 0.3s;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+  .leader-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand);
+  }
+  .leader-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .leader-info h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .leader-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--brand);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .leader-bio {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Timeline */
+  .timeline-section { padding: 100px 0; background: var(--bg-cream); }
+  .milestones {
+    margin-top: 60px;
+    position: relative;
+    padding-left: 30px;
+  }
+  .milestones::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--line);
+  }
+  .milestone {
+    position: relative;
+    padding-bottom: 36px;
+    padding-left: 40px;
+  }
+  .milestone:last-child { padding-bottom: 0; }
+  .milestone::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 3px solid var(--bg-cream);
+    z-index: 2;
+  }
+  .milestone-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--brand);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .milestone h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .milestone p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 720px;
+  }
+
+  /* Stats */
+  .about-stats {
+    padding: 80px 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .about-stat {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid var(--line);
+  }
+  .about-stat:last-child { border-right: none; }
+  .about-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--brand);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .about-stat .label {
+    font-size: 14px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* Office */
+  .office-section { padding: 100px 0; }
+  .office-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .office-img {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 480px;
+    box-shadow: var(--shadow-md);
+  }
+  .office-img img { width: 100%; height: 100%; object-fit: cover; }
+  .office-content h2 { margin-bottom: 24px; }
+  .office-content p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  .office-meta {
+    background: var(--bg-cream);
+    padding: 28px;
+    border-radius: 10px;
+    margin-top: 28px;
+  }
+  .office-meta-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .office-meta-row:last-child { border-bottom: none; }
+  .office-meta-row .key {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .office-meta-row .val {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  @media (max-width: 960px) {
+    .story-grid, .mission-grid, .office-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .leadership-grid, .values-grid, .about-stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .about-stat { border-right: none; }
+    .about-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .about-collage, .collage-grid { height: 280px; }
+    .leader-card { grid-template-columns: 80px 1fr; gap: 20px; padding: 24px; }
+    .leader-avatar { width: 80px; height: 80px; font-size: 26px; }
+    .story-section, .mission-section, .values-section, .leadership-section, .timeline-section, .office-section {
+      padding: 60px 0;
+    }
+    .mission-content { font-size: 22px; }
+  }
+  @media (max-width: 600px) {
+    .leadership-grid, .values-grid, .about-stats-grid { grid-template-columns: 1fr; }
+    .about-stat:nth-child(odd) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a><a href="#">Investor Relations</a><a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a><span>/</span>About Us
+    </div>
+    <span class="eyebrow">About Conexxion · Est. 2015</span>
+    <h1>An infrastructure partner <em>built quietly</em> over a decade — from Mysore to most of India.</h1>
+    <p class="lede">
+      Conexxion Tech India is a promoter-led infrastructure and talent partner founded in 2015 — combining the discipline of field engineering with the agility of a private, owner-run firm. Four directors. One delivery culture. Ten years of work most people never see.
+    </p>
+
+    <div class="collage-grid">
+      <div class="collage-1"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Office" /></div>
+      <div><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80" alt="Engineers" /></div>
+      <div class="collage-3"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Team" /></div>
+      <div><img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=600&q=80" alt="Workspace" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STATS -->
+<section class="about-stats">
+  <div class="container">
+    <div class="about-stats-grid">
+      <div class="about-stat">
+        <div class="num">2015</div>
+        <div class="label">Founded · Bangalore ROC</div>
+      </div>
+      <div class="about-stat">
+        <div class="num">04</div>
+        <div class="label">Practice areas</div>
+      </div>
+      <div class="about-stat">
+        <div class="num">04</div>
+        <div class="label">Promoter-directors</div>
+      </div>
+      <div class="about-stat">
+        <div class="num">28</div>
+        <div class="label">States deployed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div>
+        <span class="eyebrow">Our story</span>
+        <h2 style="margin-top: 20px;">A decade of delivery, <em>not decks.</em></h2>
+      </div>
+      <div>
+        <p>
+          Conexxion Tech India was incorporated in December 2015 in Bangalore, with a simple thesis: India's infrastructure boom — telecom, data centers, cloud and the talent powering all three — needed firms that could execute, not just consult. Firms that would show up at a tower site at 6 AM, document every cable run, and sign their name to the acceptance certificate.
+        </p>
+        <p>
+          We started small, with a focused IT staffing practice serving system integrators in South India. Within three years, our staffing relationships had grown into delivery relationships — clients began asking us to bring in not just engineers, but full project teams. By 2019, we had formal practice areas in telecom and data center delivery. Cloud infrastructure followed in 2021, as our enterprise clients began their serious migrations.
+        </p>
+        <p>
+          Today, headquartered in Mysore with delivery presence across 28 states, we work with Tier-1 operators, system integrators, hyperscaler partners and enterprises — across talent, towers, data and cloud. We've done it without venture capital, without acquisitions, and without a single missed payroll. Promoter-led, profitable, deliberately built.
+        </p>
+        <p>
+          We're not the loudest firm in our category. We're the one your peers quietly recommend after a project that actually went well.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-grid">
+      <div>
+        <span class="eyebrow" style="color: var(--accent);">Our mission</span>
+        <h2 style="margin-top: 20px;">What we're <em>here to do.</em></h2>
+      </div>
+      <div class="mission-content">
+        We exist to help India's enterprises and operators build the infrastructure their customers depend on every second — with the discipline of seasoned engineers, the agility of an owner-run firm, and the boring rigour that turns 99.5% uptime into <em>99.98%</em>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div style="max-width: 800px;">
+      <span class="eyebrow">What we stand for</span>
+      <h2 style="margin-top: 20px;">Six values that <em>actually</em> shape how we work.</h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <h4>Delivery is the deliverable</h4>
+        <p>We measure ourselves on whether the project closed on time, on scope and on budget — not on how good the kickoff deck was.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <h4>Documentation is non-optional</h4>
+        <p>Every site, server, cable and configuration is documented. Year three is when you find out whether year one was done right.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <h4>Honest scoping</h4>
+        <p>We won't oversell timelines or capabilities to win business. Painful in the sales cycle, profitable in the renewal cycle.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <h4>Engineer-led decisions</h4>
+        <p>Our practice leads are practitioners, not pure account managers. Hard technical calls are made by people who can defend them.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">05</div>
+        <h4>Field discipline</h4>
+        <p>Safety, quality audits, peer review and chain-of-custody on every site. The boring practices that prevent expensive incidents.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">06</div>
+        <h4>Long relationships</h4>
+        <p>We're built for repeat business — most of our clients are in their third engagement. We protect long-term reputation over short-term margin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership-section">
+  <div class="container">
+    <div class="section-intro" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 0; align-items: end;">
+      <div>
+        <span class="eyebrow">Leadership</span>
+        <h2 style="margin-top: 20px; max-width: 540px;">Four directors. <em>Decades</em> of operating experience.</h2>
+      </div>
+      <p style="font-size: 17px; line-height: 1.65; max-width: 480px;">
+        Promoter-led from day one. Each director leads a practice or a function — and stays close enough to client work to take a 9 PM call when it matters.
+      </p>
+    </div>
+
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <div class="leader-avatar">RH</div>
+        <div class="leader-info">
+          <h4>Ramkumar Harihara Sarma</h4>
+          <div class="leader-role">DIRECTOR · CO-FOUNDER</div>
+          <p class="leader-bio">Co-founder with deep roots in the South India telecom and IT services ecosystem. Leads strategic partnerships, key accounts and the firm's overall delivery governance.</p>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">MN</div>
+        <div class="leader-info">
+          <h4>Muddaiah Nagaraaj</h4>
+          <div class="leader-role">DIRECTOR · OPERATIONS</div>
+          <p class="leader-bio">Heads operations and field delivery across telecom and data center practices. Decades of execution experience across complex multi-site rollouts in Karnataka and beyond.</p>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">SR</div>
+        <div class="leader-info">
+          <h4>Senthilkumar Ragunandhan</h4>
+          <div class="leader-role">DIRECTOR · TECHNOLOGY</div>
+          <p class="leader-bio">Leads the technology practice — cloud, data center engineering and platform architecture. Background in large-scale enterprise transformations across BFSI and telecom.</p>
+        </div>
+      </div>
+      <div class="leader-card">
+        <div class="leader-avatar">MR</div>
+        <div class="leader-info">
+          <h4>Mytthrri N Raj</h4>
+          <div class="leader-role">DIRECTOR · TALENT &amp; STRATEGY</div>
+          <p class="leader-bio">Heads the IT staffing practice and corporate strategy. Oversees talent partnerships, client engagement and the firm's people and culture function.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES -->
+<section class="timeline-section">
+  <div class="container">
+    <div style="max-width: 800px;">
+      <span class="eyebrow">Milestones</span>
+      <h2 style="margin-top: 20px;">From a <em>three-person</em> staffing desk to a four-practice firm.</h2>
+    </div>
+
+    <div class="milestones">
+      <div class="milestone">
+        <div class="milestone-year">2015 · DECEMBER</div>
+        <h4>Conexxion Tech India incorporated</h4>
+        <p>Registered with the Bangalore ROC as a private limited company. Authorized capital of ₹50 lakh. First office: a single room in Mysore.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2016</div>
+        <h4>First enterprise staffing engagement</h4>
+        <p>Began with a focused practice in IT staffing for system integrators across South India — placements primarily in BFSI and manufacturing infrastructure roles.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2018</div>
+        <h4>Telecom services launched</h4>
+        <p>Formalized the telecom practice — site engineering, RAN integration and FTTx rollouts — with the first 50-site greenfield engagement for a regional ISP.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2020</div>
+        <h4>First data center build engagement</h4>
+        <p>Delivered our first turnkey white-space build — 80 racks across two halls — for an enterprise client in Bangalore. Crossed 100 cumulative engineers placed.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2021</div>
+        <h4>Cloud infrastructure practice formed</h4>
+        <p>Launched the cloud practice with AWS and Azure specialists, in response to enterprise migration demand. First migration engagement: 240 workloads from on-prem to AWS.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2023</div>
+        <h4>Pan-India delivery footprint</h4>
+        <p>Crossed 1,000 cumulative sites deployed and 200 cumulative engineers placed. Formalized 14-city delivery hubs and mobilization SLAs.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-year">2025</div>
+        <h4>A decade in delivery</h4>
+        <p>Crossed 1,200 sites, 200+ engineers placed, 15+ data center projects and 40+ cloud engagements. Signed our 50th repeat-business contract.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE -->
+<section class="office-section">
+  <div class="container">
+    <div class="office-grid">
+      <div class="office-img">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80" alt="Office" />
+      </div>
+      <div class="office-content">
+        <span class="eyebrow">Headquarters</span>
+        <h2 style="margin-top: 20px;">Mysore, Karnataka — <em>South India's</em> quiet engineering hub.</h2>
+        <p>
+          We chose Mysore deliberately. It's close enough to the Bangalore ecosystem to attract senior talent, far enough away to retain the focus and operating discipline that defines our work. It's also where most of our directors are from — and where the best long-term decisions for the firm get made.
+        </p>
+        <div class="office-meta">
+          <div class="office-meta-row">
+            <span class="key">Registered Office</span>
+            <span class="val">Mysore, Karnataka</span>
+          </div>
+          <div class="office-meta-row">
+            <span class="key">CIN</span>
+            <span class="val">U74900KA2015PTC080993</span>
+          </div>
+          <div class="office-meta-row">
+            <span class="key">Incorporated</span>
+            <span class="val">19 December 2015</span>
+          </div>
+          <div class="office-meta-row">
+            <span class="key">ROC</span>
+            <span class="val">Bangalore</span>
+          </div>
+          <div class="office-meta-row">
+            <span class="key">Authorized Capital</span>
+            <span class="val">₹50,00,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Want to <em>work with us</em> — or <em>for us?</em></h2>
+      <p>Whether you have an infrastructure project to scope, a hiring need to discuss, or a career to build — we'd love to talk.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Start a conversation →</a>
+      <a href="#" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">View open roles</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

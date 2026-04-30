@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conexxion Tech India — IT Staffing, Telecom, Data Center & Cloud Infrastructure</title>
+<meta name="description" content="Conexxion Tech India is a Mysore-based infrastructure partner delivering IT staffing, telecom, data center and cloud services to enterprises across India." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ============================================
+     HOMEPAGE-SPECIFIC STYLES
+     ============================================ */
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at top right, rgba(238,150,75,0.06) 0%, transparent 50%),
+      var(--bg);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero h1 {
+    margin-bottom: 28px;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(180deg, transparent 60%, var(--accent-soft) 60%);
+    padding: 0 4px;
+  }
+  .hero-lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 36px;
+    max-width: 540px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .hero-trust {
+    display: flex;
+    gap: 36px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .trust-num {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--brand);
+    line-height: 1;
+  }
+  .trust-label {
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Hero visual collage */
+  .hero-visual {
+    position: relative;
+    height: 580px;
+  }
+  .hero-img {
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: #fff;
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-img-1 {
+    top: 0; left: 0;
+    width: 65%;
+    height: 360px;
+    transform: rotate(-2deg);
+  }
+  .hero-img-2 {
+    bottom: 30px; right: 0;
+    width: 55%;
+    height: 280px;
+    transform: rotate(2deg);
+    border: 6px solid #fff;
+  }
+  .hero-badge {
+    position: absolute;
+    top: 30px; right: 0;
+    background: var(--brand-deep);
+    color: #fff;
+    padding: 18px 22px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    box-shadow: var(--shadow-md);
+    transform: rotate(6deg);
+    z-index: 3;
+  }
+  .hero-badge strong {
+    color: var(--accent);
+    font-size: 22px;
+    font-family: 'Fraunces', serif;
+    display: block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .hero-stat-card {
+    position: absolute;
+    bottom: -20px; left: 30px;
+    background: #fff;
+    padding: 18px 22px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 3;
+  }
+  .hero-stat-card .pulse {
+    width: 12px; height: 12px;
+    background: #2d5a3d;
+    border-radius: 50%;
+    position: relative;
+  }
+  .hero-stat-card .pulse::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: rgba(45,90,61,0.3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .hero-stat-card span {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .hero-stat-card strong {
+    display: block;
+    font-size: 16px;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+  }
+
+  /* CLIENTS / TRUST BAND */
+  .trust-band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 36px 0;
+    background: #fff;
+  }
+  .trust-band .container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .trust-label-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+  }
+  .trust-label-text strong { color: var(--ink); display: block; font-size: 13px; }
+  .trust-logos {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .trust-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink-mute);
+    letter-spacing: -0.01em;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .trust-logo:hover { opacity: 1; color: var(--brand); }
+  .trust-logo small {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    color: var(--ink-mute);
+  }
+
+  /* SERVICES SECTION */
+  .services-section {
+    padding: 120px 0 60px;
+  }
+  .section-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 70px;
+    align-items: end;
+  }
+  .section-intro h2 { max-width: 540px; }
+  .section-intro p {
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 480px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    border-color: var(--brand);
+  }
+  .service-card-img {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+  .service-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .service-card:hover .service-card-img img { transform: scale(1.05); }
+  .service-card-num {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: rgba(255,255,255,0.95);
+    color: var(--brand);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+  }
+  .service-card-body {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card-body h3 {
+    margin-bottom: 12px;
+    font-size: 26px;
+  }
+  .service-card-body p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .service-card-tags {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .service-card-tags span {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--brand);
+    background: var(--accent-soft);
+    padding: 5px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .service-card-link {
+    color: var(--brand);
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+    margin-top: auto;
+  }
+  .service-card-link:hover { gap: 12px; }
+  .service-card-link::after { content: '→'; font-size: 16px; }
+
+  /* WHY US */
+  .why-section {
+    padding: 100px 0;
+    background: var(--bg-cream);
+    margin-top: 80px;
+    position: relative;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .why-left h2 { margin-bottom: 24px; }
+  .why-left p {
+    font-size: 16.5px;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+  .why-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .feature {
+    background: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    color: var(--brand);
+  }
+  .feature h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .feature p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* APPROACH / PROCESS */
+  .approach-section {
+    padding: 120px 0;
+  }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .approach-step {
+    border-top: 2px solid var(--line);
+    padding-top: 24px;
+    position: relative;
+  }
+  .approach-step::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: 0;
+    width: 40%;
+    height: 2px;
+    background: var(--accent);
+  }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .approach-step h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .approach-step p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* STATS BAND */
+  .stats-band {
+    background: var(--brand-deep);
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .stats-band .container { position: relative; }
+  .stats-band h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stats-band h2 em { color: var(--accent); }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #1a2e47;
+    border: 1px solid #1a2e47;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .stat-cell {
+    background: var(--brand-deep);
+    padding: 36px 28px;
+    text-align: left;
+  }
+  .stat-cell .num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .stat-cell .num sup { font-size: 28px; vertical-align: top; }
+  .stat-cell .label {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .stat-cell .sub {
+    font-size: 13px;
+    color: #95a0b2;
+    line-height: 1.5;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    padding: 120px 0;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .testimonial {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 36px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    position: absolute;
+    top: 12px; left: 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 80px;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.3;
+  }
+  .testimonial-text {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 28px;
+    margin-top: 16px;
+    font-weight: 400;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .author-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .author-info strong {
+    display: block;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .author-info span {
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+
+  /* INSIGHTS / BLOG TEASER */
+  .insights-section {
+    padding: 0 0 120px;
+  }
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 60px;
+  }
+  .insight-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .insight-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+  .insight-img {
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg-cream);
+  }
+  .insight-img img { width: 100%; height: 100%; object-fit: cover; }
+  .insight-body { padding: 24px; }
+  .insight-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--brand);
+    margin-bottom: 12px;
+  }
+  .insight-meta span { color: var(--ink-mute); margin-left: 10px; }
+  .insight-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .insight-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hero { padding: 50px 0 70px; }
+    .hero-grid, .why-grid, .section-intro {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-visual { height: 420px; }
+    .hero-img-1 { width: 70%; height: 280px; }
+    .hero-img-2 { width: 60%; height: 220px; }
+    .services-grid, .why-features, .testimonials-grid, .insights-grid, .approach-grid, .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stats-grid { gap: 1px; }
+    .trust-band .container { grid-template-columns: 1fr; gap: 20px; }
+    .trust-logos { gap: 20px; }
+    .trust-logo { font-size: 18px; }
+    .why-section, .approach-section, .testimonials-section { padding: 70px 0; }
+    .insights-section { padding-bottom: 70px; }
+  }
+  @media (max-width: 600px) {
+    .services-grid, .why-features, .testimonials-grid, .insights-grid, .approach-grid, .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-trust { gap: 20px; }
+    .trust-num { font-size: 26px; }
+    .stat-cell .num { font-size: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+      <a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li class="nav-services">
+        <a href="#">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">
+            IT Staffing
+            <small>Talent acquisition & managed teams</small>
+          </a>
+          <a href="service-telecom.html">
+            Telecom
+            <small>Network rollout & 5G engineering</small>
+          </a>
+          <a href="service-data-center.html">
+            Data Center
+            <small>Build, migrate & operate</small>
+          </a>
+          <a href="service-cloud.html">
+            Cloud Infrastructure
+            <small>AWS, Azure & hybrid platforms</small>
+          </a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Est. 2015 · Trusted Infrastructure Partner</span>
+        <h1 style="margin-top: 24px;">
+          Engineering the <em>connected</em> enterprise — <span class="highlight">talent</span>, towers, data &amp; cloud.
+        </h1>
+        <p class="hero-lede">
+          Conexxion Tech India is a Mysore-based infrastructure and talent partner helping enterprises, operators and hyperscalers build the systems their customers depend on every second.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Start a project →</a>
+          <a href="#services" class="btn btn-outline btn-lg">Explore services</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-num">10+</span>
+            <span class="trust-label">Years in operation</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-num">04</span>
+            <span class="trust-label">Practice areas</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-num">28</span>
+            <span class="trust-label">States deployed</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-badge">
+          <strong>ISO 9001</strong>
+          Certified delivery
+        </div>
+        <div class="hero-img hero-img-1">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80" alt="Modern data center" />
+        </div>
+        <div class="hero-img hero-img-2">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="IT engineers collaborating" />
+        </div>
+        <div class="hero-stat-card">
+          <div class="pulse"></div>
+          <div>
+            <strong>99.98% uptime</strong>
+            <span>across managed sites</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="container">
+    <div class="trust-label-text">
+      <strong>Trusted by</strong>
+      operators, system integrators &amp; enterprises
+    </div>
+    <div class="trust-logos">
+      <div class="trust-logo">Telindus<small>Telecom</small></div>
+      <div class="trust-logo">NetVerse<small>ISP</small></div>
+      <div class="trust-logo">Aurion<small>BFSI</small></div>
+      <div class="trust-logo">Cygnus IT<small>Enterprise</small></div>
+      <div class="trust-logo">Helix Cloud<small>Hyperscaler</small></div>
+      <div class="trust-logo">Veridian<small>Manufacturing</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">What we do</span>
+        <h2 style="margin-top: 20px;">Four practices, <em>one accountable partner</em> across your stack.</h2>
+      </div>
+      <p>
+        From hiring senior engineers to lighting up 5G sites, building hyperscale data centers, and re-platforming workloads to the cloud — we deliver the unsexy, mission-critical work that keeps modern businesses running. Pick one practice, or work with us across all four.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <!-- IT Staffing -->
+      <a href="service-it-staffing.html" class="service-card">
+        <div class="service-card-img">
+          <span class="service-card-num">01 / SERVICE</span>
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80" alt="IT Staffing" />
+        </div>
+        <div class="service-card-body">
+          <h3>IT Staffing</h3>
+          <p>Vetted engineers, architects and operators — placed as contract, contract-to-hire or full-time, with managed-team options for sustained capacity.</p>
+          <div class="service-card-tags">
+            <span>Contract</span><span>Permanent</span><span>Managed Teams</span><span>RPO</span>
+          </div>
+          <span class="service-card-link">Explore IT Staffing</span>
+        </div>
+      </a>
+
+      <!-- Telecom -->
+      <a href="service-telecom.html" class="service-card">
+        <div class="service-card-img">
+          <span class="service-card-num">02 / SERVICE</span>
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80" alt="Telecom Infrastructure" />
+        </div>
+        <div class="service-card-body">
+          <h3>Telecom Services</h3>
+          <p>Site engineering, fiber and FTTx rollout, 4G/5G deployment and managed services for operators and ISPs — with field-proven crews and OEM-grade execution.</p>
+          <div class="service-card-tags">
+            <span>5G Rollout</span><span>FTTx</span><span>RAN</span><span>Managed Services</span>
+          </div>
+          <span class="service-card-link">Explore Telecom</span>
+        </div>
+      </a>
+
+      <!-- Data Center -->
+      <a href="service-data-center.html" class="service-card">
+        <div class="service-card-img">
+          <span class="service-card-num">03 / SERVICE</span>
+          <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?w=900&q=80" alt="Data Center" />
+        </div>
+        <div class="service-card-body">
+          <h3>Data Center</h3>
+          <p>End-to-end data center delivery — design, build, migrate, and operate. Rack &amp; stack, structured cabling, DCIM, and 24×7 facility operations to colocation standard.</p>
+          <div class="service-card-tags">
+            <span>Greenfield</span><span>Migration</span><span>Operations</span><span>Cabling</span>
+          </div>
+          <span class="service-card-link">Explore Data Center</span>
+        </div>
+      </a>
+
+      <!-- Cloud -->
+      <a href="service-cloud.html" class="service-card">
+        <div class="service-card-img">
+          <span class="service-card-num">04 / SERVICE</span>
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=80" alt="Cloud Infrastructure" />
+        </div>
+        <div class="service-card-body">
+          <h3>Cloud Infrastructure</h3>
+          <p>Cloud strategy, landing zones, migration and platform engineering across AWS, Azure and hybrid environments — built for cost discipline, security and operating-model fit.</p>
+          <div class="service-card-tags">
+            <span>AWS</span><span>Azure</span><span>Hybrid</span><span>Platform Engineering</span>
+          </div>
+          <span class="service-card-link">Explore Cloud</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-left">
+        <span class="eyebrow">Why Conexxion</span>
+        <h2 style="margin-top: 20px;">Built like infrastructure. <em>Run like a partner.</em></h2>
+        <p>
+          We aren't a generalist consultancy. We are operators — the kind of team you call when a tower has to go up by month-end, when a data center has to migrate over a single weekend, or when a niche SAP role has to be filled in two weeks instead of two months.
+        </p>
+        <p>
+          Promoter-led since 2015, with four directors and a long-tenure delivery bench, we trade slick decks for short paths to "done."
+        </p>
+        <a href="about.html" class="btn btn-outline">More about us →</a>
+      </div>
+
+      <div class="why-features">
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>End-to-end delivery</h4>
+          <p>From talent to towers to cloud, one accountable partner across the stack.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>OEM-grade execution</h4>
+          <p>Field crews and engineers trained to operator and hyperscaler standards.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+          </div>
+          <h4>Pan-India footprint</h4>
+          <p>Headquartered in Karnataka, deployed across metros, tier-2 and remote sites.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h4>Promoter-led</h4>
+          <p>Four directors, decades of experience. Direct line to decision-makers — always.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">How we work</span>
+        <h2 style="margin-top: 20px;">A delivery method <em>that respects</em> your timeline.</h2>
+      </div>
+      <p>
+        Whether we're staffing a team or building a data hall, the path is the same: scope tightly, plan honestly, deliver in measured stages, and report against a number — not a narrative.
+      </p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-step">
+        <div class="step-num">STEP 01</div>
+        <h4>Discover</h4>
+        <p>Workshop with your team to map current state, constraints and the real definition of "done."</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">STEP 02</div>
+        <h4>Design</h4>
+        <p>A right-sized solution — not a 200-page deck. Architecture, plan, milestones, accountable owners.</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">STEP 03</div>
+        <h4>Deploy</h4>
+        <p>Field execution with weekly visibility. We escalate early and finish on the date we committed to.</p>
+      </div>
+      <div class="approach-step">
+        <div class="step-num">STEP 04</div>
+        <h4>Operate</h4>
+        <p>Optional managed services and SLAs after go-live, including 24×7 NOC and on-site support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="container">
+    <h2>A decade of <em>delivery</em>, measured in numbers.</h2>
+    <div class="stats-grid">
+      <div class="stat-cell">
+        <div class="num">200<sup>+</sup></div>
+        <div class="label">Engineers placed</div>
+        <div class="sub">across BFSI, telecom &amp; manufacturing</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">1.2K</div>
+        <div class="label">Sites deployed</div>
+        <div class="sub">4G, 5G, FTTx and microwave</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">15<sup>+</sup></div>
+        <div class="label">Data center projects</div>
+        <div class="sub">greenfield, brownfield &amp; migration</div>
+      </div>
+      <div class="stat-cell">
+        <div class="num">99.98<sup>%</sup></div>
+        <div class="label">Uptime delivered</div>
+        <div class="sub">across managed cloud &amp; DC sites</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Client voices</span>
+        <h2 style="margin-top: 20px;">Words from the people <em>who hired us back.</em></h2>
+      </div>
+      <p>
+        We measure ourselves on repeat business. Here's what some of the leaders we've worked with had to say about delivery, communication and outcomes.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p class="testimonial-text">
+          Conexxion's site team delivered our Karnataka 5G rollout three weeks ahead of plan — and stayed on through optimization. The kind of partner you keep on speed dial.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RS</div>
+          <div class="author-info">
+            <strong>Rohit Shankar</strong>
+            <span>Head of Network Deployment, Tier-1 Operator</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">
+          We needed twelve niche infrastructure engineers in six weeks. They delivered ten in three. Honest scoping, no padding, real engineers — not résumé farms.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PV</div>
+          <div class="author-info">
+            <strong>Priya Venkatesh</strong>
+            <span>VP Engineering, Fintech Platform</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">
+          Our DC migration ran across two weekends with zero unplanned outage. Documentation was meticulous. Communication was hourly. We've signed a three-year operations contract.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AK</div>
+          <div class="author-info">
+            <strong>Anand Krishnan</strong>
+            <span>CIO, Manufacturing Conglomerate</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">
+          They cut our Azure spend by 31% in the first quarter post-migration without compromising performance. Cost discipline that actually shows up in the invoice.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ME</div>
+          <div class="author-info">
+            <strong>Meera Eswaran</strong>
+            <span>Director of Cloud, eCommerce Group</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="insights-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Insights & writing</span>
+        <h2 style="margin-top: 20px;">From the field — <em>notes</em> from our practice.</h2>
+      </div>
+      <p>
+        Short, practical pieces from our engineers and project managers — the things we wish we'd known before the kickoff meeting.
+      </p>
+    </div>
+
+    <div class="insights-grid">
+      <a href="blog.html" class="insight-card">
+        <div class="insight-img">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="Hiring engineers" />
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">IT STAFFING <span>5 min read</span></div>
+          <h4>Why "résumé matching" is failing your engineering hires</h4>
+          <p>Keyword screening misses the engineers you actually want. A short note on what we've learned about staffing real systems work.</p>
+        </div>
+      </a>
+
+      <a href="blog.html" class="insight-card">
+        <div class="insight-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="5G rollout" />
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">TELECOM <span>7 min read</span></div>
+          <h4>5G in tier-2 India: what the playbook actually looks like</h4>
+          <p>Permits, power, fiber back-haul and crew logistics — what a realistic 5G deployment timeline includes outside metros.</p>
+        </div>
+      </a>
+
+      <a href="blog.html" class="insight-card">
+        <div class="insight-img">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Cloud migration" />
+        </div>
+        <div class="insight-body">
+          <div class="insight-meta">CLOUD <span>6 min read</span></div>
+          <h4>The 7 hidden costs of a "lift-and-shift" cloud migration</h4>
+          <p>Egress, idle compute, backup sprawl — what teams discover after the celebration emails go out.</p>
+        </div>
+      </a>
+    </div>
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="blog.html" class="btn btn-outline">Read all insights →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Have an <em>infrastructure problem</em> worth solving?</h2>
+      <p>Talk to us about your project. We respond within one business day with a clear scoping path — no theatrical sales process.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Start a conversation →</a>
+      <a href="mailto:rajnswiss@gmail.com" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">Email us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Email">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cloud Infrastructure — Conexxion Tech India</title>
+<meta name="description" content="Cloud strategy, migration and platform engineering across AWS, Azure and hybrid environments. Built for cost discipline, security and operational fit." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .service-hero { background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%); padding: 70px 0 90px; position: relative; overflow: hidden; }
+  .service-hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .service-hero h1 { margin: 20px 0 24px; }
+  .service-hero .lede { font-size: 19px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 32px; max-width: 560px; }
+  .service-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .service-hero-img { border-radius: 14px; overflow: hidden; height: 480px; box-shadow: var(--shadow-lg); position: relative; }
+  .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .service-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(13,59,102,0.4) 100%); }
+  .service-hero-tag { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,0.95); color: var(--brand); padding: 12px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; z-index: 2; box-shadow: var(--shadow-sm); }
+
+  .quick-stats { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px 0; }
+  .quick-stats .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .quick-stat { text-align: center; padding: 0 20px; border-right: 1px solid var(--line); }
+  .quick-stat:last-child { border-right: none; }
+  .quick-stat .num { font-family: 'Fraunces', serif; font-size: 42px; color: var(--brand); line-height: 1; margin-bottom: 8px; font-weight: 500; }
+  .quick-stat .label { font-size: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .content-section { padding: 100px 0; }
+  .content-section.alt { background: var(--bg-cream); }
+  .two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .two-col h2 { margin-bottom: 24px; }
+  .two-col p { font-size: 16.5px; line-height: 1.7; margin-bottom: 18px; }
+  .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 50px; align-items: end; }
+  .section-intro h2 { max-width: 540px; }
+  .section-intro p { font-size: 17px; line-height: 1.65; max-width: 480px; }
+
+  /* Cloud capabilities */
+  .cloud-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .cloud-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .cloud-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--brand); }
+  .cloud-card .num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.08em; }
+  .cloud-card h4 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 12px; }
+  .cloud-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; }
+  .cloud-card ul { list-style: none; padding: 0; }
+  .cloud-card ul li { font-size: 13.5px; color: var(--ink-soft); padding: 6px 0; border-top: 1px dashed var(--line); display: flex; gap: 8px; }
+  .cloud-card ul li::before { content: '→'; color: var(--brand); font-weight: bold; }
+
+  /* Platforms */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .platform-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .platform-card:hover { box-shadow: var(--shadow-md); }
+  .platform-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--brand);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .platform-card .tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .platform-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* Feature blocks */
+  .feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
+  .feature-block:last-child { margin-bottom: 0; }
+  .feature-block.reverse { direction: rtl; }
+  .feature-block.reverse > * { direction: ltr; }
+  .feature-block-img { border-radius: 12px; overflow: hidden; height: 420px; box-shadow: var(--shadow-md); }
+  .feature-block-img img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-block-content h3 { margin-bottom: 18px; }
+  .feature-block-content p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .feature-block-content .pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--accent-soft); color: var(--brand); padding: 6px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
+  .feature-block-content ul { margin-top: 20px; list-style: none; padding: 0; }
+  .feature-block-content ul li { padding: 8px 0; font-size: 15px; color: var(--ink-soft); display: flex; gap: 12px; align-items: flex-start; }
+  .feature-block-content ul li::before { content: '✓'; color: var(--green); font-weight: bold; flex-shrink: 0; }
+
+  /* Process - migration framework */
+  .framework-section {
+    padding: 100px 0;
+    background: var(--brand-deep);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .framework-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; }
+  .framework-section .container { position: relative; }
+  .framework-section h2 { color: #fff; margin-bottom: 24px; }
+  .framework-section h2 em { color: var(--accent); }
+  .framework-section p { color: #cdd5e0; }
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .framework-step {
+    padding: 28px 22px;
+    background: rgba(255,255,255,0.04);
+    transition: background 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .framework-step:last-child { border-right: none; }
+  .framework-step:hover { background: rgba(255,255,255,0.08); }
+  .framework-step .num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .framework-step h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .framework-step p {
+    font-size: 12.5px;
+    color: #95a0b2;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Case study */
+  .case-study { background: #fff; border-radius: 14px; padding: 50px; border: 1px solid var(--line); margin-top: 60px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center; }
+  .case-study .case-img { border-radius: 10px; overflow: hidden; height: 320px; }
+  .case-study .case-img img { width: 100%; height: 100%; object-fit: cover; }
+  .case-study .case-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; font-weight: 500; }
+  .case-study h3 { font-size: 28px; margin-bottom: 16px; }
+  .case-study p { font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; }
+  .case-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 20px; }
+  .case-stat .num { font-family: 'Fraunces', serif; font-size: 32px; color: var(--brand); line-height: 1; }
+  .case-stat .label { font-size: 12px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+
+  /* FAQ */
+  .faq-grid { margin-top: 50px; max-width: 880px; }
+  .faq-item { border-top: 1px solid var(--line); padding: 24px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); margin-bottom: 10px; font-weight: 500; }
+  .faq-a { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); }
+
+  @media (max-width: 960px) {
+    .service-hero { padding: 40px 0 60px; }
+    .service-hero-grid, .two-col, .section-intro, .feature-block, .case-study { grid-template-columns: 1fr; gap: 40px; }
+    .feature-block.reverse { direction: ltr; }
+    .service-hero-img, .feature-block-img { height: 320px; }
+    .quick-stats .container, .platforms-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .quick-stat { border-right: none; }
+    .quick-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .cloud-grid { grid-template-columns: 1fr; }
+    .case-study { padding: 30px; }
+    .case-stats-row { grid-template-columns: 1fr; gap: 12px; }
+    .framework-grid { grid-template-columns: 1fr 1fr; }
+    .framework-step { border-right: 1px solid rgba(255,255,255,0.08) !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .content-section { padding: 60px 0; }
+  }
+  @media (max-width: 600px) {
+    .platforms-grid { grid-template-columns: 1fr; }
+    .framework-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a><a href="#">Investor Relations</a><a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#" class="active">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="service-hero">
+  <div class="container">
+    <div class="service-hero-grid">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span>/</span><a href="#">Services</a><span>/</span>Cloud Infrastructure
+        </div>
+        <span class="eyebrow">Service 04 — Cloud &amp; Platforms</span>
+        <h1>Cloud done with <em>cost discipline</em>, security &amp; operating-model fit.</h1>
+        <p class="lede">
+          Cloud strategy, migration and platform engineering across AWS, Azure and hybrid environments — designed around how your engineering teams actually want to work, with cost controls and security baked in from day one.
+        </p>
+        <div class="service-hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Discuss your roadmap →</a>
+          <a href="#capabilities" class="btn btn-outline btn-lg">View capabilities</a>
+        </div>
+      </div>
+      <div class="service-hero-img">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80" alt="Cloud infrastructure" />
+        <div class="service-hero-tag">📉 31% avg. cloud cost reduction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="quick-stats">
+  <div class="container">
+    <div class="quick-stat">
+      <div class="num">40+</div>
+      <div class="label">Cloud projects</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">31%</div>
+      <div class="label">Avg. cost reduction</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">12wk</div>
+      <div class="label">Median migration</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">3</div>
+      <div class="label">Hyperscaler practices</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="content-section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Our cloud practice</span>
+        <h2 style="margin-top: 20px;">Cloud is easy to <em>start</em> and hard to <em>operate.</em></h2>
+      </div>
+      <div>
+        <p>
+          Most organizations didn't fail at "moving to cloud." They failed at running it — at the cost shock six months in, the security drift in year two, the platform sprawl in year three. We design cloud estates for the long run, not the proof-of-concept.
+        </p>
+        <p>
+          That means landing zones with guardrails, FinOps practices that survive past the kickoff, security baselines that are enforced — not posters — and a platform layer that lets your application teams ship instead of filing tickets to ops.
+        </p>
+        <p>
+          We work across AWS, Azure and hybrid environments — and we're honest about where each shines and where it doesn't.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="content-section alt" id="capabilities">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Capabilities</span>
+        <h2 style="margin-top: 20px;">Six service lines from <em>strategy to steady-state.</em></h2>
+      </div>
+      <p>
+        Plug us in at any stage of your cloud journey, or work with us across the full lifecycle. Most clients start with one engagement and expand from there.
+      </p>
+    </div>
+
+    <div class="cloud-grid">
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 01</div>
+        <h4>Cloud Strategy &amp; Assessment</h4>
+        <p>Workload portfolio review, target operating model and a realistic migration business case.</p>
+        <ul>
+          <li>Application portfolio assessment</li>
+          <li>6Rs disposition (rehost, replatform, etc.)</li>
+          <li>TCO modelling &amp; business case</li>
+          <li>Operating-model design</li>
+        </ul>
+      </div>
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 02</div>
+        <h4>Landing Zones &amp; Foundations</h4>
+        <p>Multi-account / multi-subscription landing zones with policy guardrails and network design.</p>
+        <ul>
+          <li>AWS Control Tower / Azure Landing Zone</li>
+          <li>Network &amp; transit architectures</li>
+          <li>Identity &amp; SSO integration</li>
+          <li>Tagging, naming &amp; governance</li>
+        </ul>
+      </div>
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 03</div>
+        <h4>Migration &amp; Modernization</h4>
+        <p>Wave-based migrations from on-prem or legacy cloud — with selective modernization.</p>
+        <ul>
+          <li>Wave planning &amp; cutover runbooks</li>
+          <li>Replatforming to managed services</li>
+          <li>Containerization (EKS / AKS)</li>
+          <li>Database modernization (Aurora, etc.)</li>
+        </ul>
+      </div>
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 04</div>
+        <h4>Platform Engineering</h4>
+        <p>Internal developer platforms, CI/CD, IaC and self-service abstractions for application teams.</p>
+        <ul>
+          <li>Terraform &amp; module catalogues</li>
+          <li>GitOps pipelines (Argo, Flux)</li>
+          <li>Internal developer portals</li>
+          <li>Observability stacks (Prometheus, Grafana)</li>
+        </ul>
+      </div>
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 05</div>
+        <h4>FinOps &amp; Cost Optimization</h4>
+        <p>Bring your cloud bill under control without crippling engineering velocity.</p>
+        <ul>
+          <li>Reserved &amp; savings plans</li>
+          <li>Right-sizing &amp; idle resource cleanup</li>
+          <li>Egress &amp; storage tier optimization</li>
+          <li>Cost dashboards &amp; chargeback</li>
+        </ul>
+      </div>
+      <div class="cloud-card">
+        <div class="num">CAPABILITY 06</div>
+        <h4>Cloud Security &amp; Compliance</h4>
+        <p>Identity, network, data and workload security baked into landing zones and CI/CD.</p>
+        <ul>
+          <li>CSPM &amp; policy enforcement</li>
+          <li>Workload &amp; container security</li>
+          <li>Data classification &amp; encryption</li>
+          <li>SOC 2 / ISO 27001 readiness</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Platform expertise</span>
+        <h2 style="margin-top: 20px;">Tier-1 expertise across <em>three platforms.</em></h2>
+      </div>
+      <p>
+        Our engineers carry current certifications and active production experience on each. We tell you honestly when one fits better than another — and when staying on-prem is actually the right answer.
+      </p>
+    </div>
+
+    <div class="platforms-grid">
+      <div class="platform-card">
+        <div class="platform-logo">AWS</div>
+        <div class="tier">PRIMARY PRACTICE</div>
+        <p>EC2, EKS, Lambda, RDS, Aurora, S3, Glue, Redshift, Control Tower, Organizations and the full networking stack — Solutions Architect, DevOps and Security specialty engineers on bench.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-logo">Microsoft Azure</div>
+        <div class="tier">PRIMARY PRACTICE</div>
+        <p>AKS, App Service, Azure SQL, Cosmos DB, Synapse, Data Factory, Sentinel, Defender, Entra ID and Azure Landing Zone — including hybrid scenarios with Azure Arc.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-logo">Hybrid &amp; Edge</div>
+        <div class="tier">SPECIALIST PRACTICE</div>
+        <p>For workloads that legitimately need to stay close — VMware Cloud, OpenStack, edge clusters and on-prem Kubernetes (Rancher, OpenShift) integrated with public-cloud control planes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="framework-section">
+  <div class="container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="eyebrow" style="color: var(--accent);">Migration framework</span>
+      <h2 style="margin-top: 20px;">Six phases from <em>portfolio assessment</em> to steady-state operations.</h2>
+      <p style="max-width: 640px; margin: 16px auto 0;">
+        Our migration framework is documented, repeatable, and rehearsed. Every wave runs the same six phases — which is why our cutover-night surprises are measured in single digits, not double.
+      </p>
+    </div>
+
+    <div class="framework-grid">
+      <div class="framework-step">
+        <div class="num">01</div>
+        <h4>Assess</h4>
+        <p>Portfolio inventory, dependency mapping, 6Rs disposition.</p>
+      </div>
+      <div class="framework-step">
+        <div class="num">02</div>
+        <h4>Design</h4>
+        <p>Landing zone, network, security &amp; operating-model design.</p>
+      </div>
+      <div class="framework-step">
+        <div class="num">03</div>
+        <h4>Foundation</h4>
+        <p>Build the landing zone, guardrails &amp; CI/CD spine.</p>
+      </div>
+      <div class="framework-step">
+        <div class="num">04</div>
+        <h4>Migrate</h4>
+        <p>Wave-by-wave migration with rehearsed cutovers.</p>
+      </div>
+      <div class="framework-step">
+        <div class="num">05</div>
+        <h4>Optimize</h4>
+        <p>FinOps, right-sizing &amp; performance tuning.</p>
+      </div>
+      <div class="framework-step">
+        <div class="num">06</div>
+        <h4>Operate</h4>
+        <p>Managed cloud ops, SLAs &amp; quarterly reviews.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BLOCKS -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Where we go deepest</span>
+        <h2 style="margin-top: 20px;">Three engagements that <em>solve real problems.</em></h2>
+      </div>
+      <p>
+        The work most clients hire us back for — because it's the work that pays for itself.
+      </p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=80" alt="Cloud migration" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Migration with cost discipline</span>
+        <h3>Migrations that don't blow up the cloud bill in month four.</h3>
+        <p>
+          Most "lift-and-shift" migrations show their true cost six months in — when over-provisioned VMs, undeleted snapshots and untagged resources have quietly compounded into a 40% overspend. We bake FinOps into the migration itself, not as a year-two project.
+        </p>
+        <ul>
+          <li>Right-sized targets validated against utilization data</li>
+          <li>Tagging policies enforced at provisioning</li>
+          <li>Reserved &amp; savings plan modelling pre-cutover</li>
+          <li>Cost dashboards live before the first wave migrates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block reverse">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80" alt="Platform engineering" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Platform engineering</span>
+        <h3>Internal developer platforms that engineers actually use.</h3>
+        <p>
+          A platform isn't a Confluence page. It's the path of least resistance for your application teams to get to production safely. We build internal developer platforms — Terraform module catalogues, GitOps pipelines, internal developer portals, observability stacks — that engineers reach for first because they're easier than the alternative.
+        </p>
+        <ul>
+          <li>Self-service infrastructure with policy guardrails</li>
+          <li>Standardized service templates across teams</li>
+          <li>Built-in observability &amp; security defaults</li>
+          <li>Documentation co-located with the platform</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80" alt="Cloud security" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Cloud security &amp; FinOps</span>
+        <h3>Cost and security guardrails that hold up in production.</h3>
+        <p>
+          Most cloud governance fails because it's a side-project. We embed governance into the platform itself — policy-as-code in CI/CD, CSPM with auto-remediation, tagging that's enforced at create-time, cost anomaly detection that pings a Slack channel before it pings the CFO.
+        </p>
+        <ul>
+          <li>Policy-as-code (OPA / Sentinel) in CI/CD</li>
+          <li>CSPM integration (Prisma, Wiz, native tooling)</li>
+          <li>Automated cost anomaly alerts</li>
+          <li>Quarterly security &amp; cost reviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Case in point</span>
+        <h2 style="margin-top: 20px;">31% Azure cost reduction <em>without performance loss.</em></h2>
+      </div>
+      <p>
+        An eCommerce group brought us in after their first year on Azure showed runaway costs. We delivered structural cost reduction inside one quarter.
+      </p>
+    </div>
+
+    <div class="case-study">
+      <div class="case-img">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Cloud cost optimization" />
+      </div>
+      <div>
+        <div class="case-tag">CASE STUDY · ECOMMERCE GROUP</div>
+        <h3>From cost shock to cost discipline in one quarter.</h3>
+        <p>
+          The brief: cut Azure spend by at least 25% in 90 days without breaking the customer-facing platform. We delivered 31% across right-sizing, reserved instances, storage tier moves, idle-resource cleanup and a re-architected egress pattern — and put live dashboards in the FinOps team's hands so the savings would stick beyond our engagement.
+        </p>
+        <div class="case-stats-row">
+          <div class="case-stat">
+            <div class="num">-31%</div>
+            <div class="label">Monthly Azure spend</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">90d</div>
+            <div class="label">From kickoff to result</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">0</div>
+            <div class="label">P1 incidents introduced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">FAQ</span>
+        <h2 style="margin-top: 20px;">Questions <em>cloud leaders ask</em> before signing the SOW.</h2>
+      </div>
+      <p>
+        If your question isn't here, write to us — we'll respond inside one business day with a real engineer's answer.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Do you have a preferred hyperscaler?</div>
+        <div class="faq-a">No — we're platform-agnostic. We hold partnerships and certifications across AWS, Azure and have hybrid expertise. We assess the right fit per workload, factoring in your existing skills, commercial relationships and regulatory constraints. If staying on-prem is the right call for a workload, we'll tell you that too.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do you size a cloud migration commercial?</div>
+        <div class="faq-a">After a 1–2 week portfolio assessment, we provide a fixed-price proposal for migration foundations and a wave-based price model for the migration itself. We've delivered migrations from 50 workloads to 1,500+ workloads using the same framework.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you operate our cloud after the project ends?</div>
+        <div class="faq-a">Yes. Many clients move into a managed cloud operations engagement after migration — covering 24×7 monitoring, incident response, cost governance, security operations and quarterly architecture reviews. SLAs are scoped per workload tier.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What FinOps tooling do you use?</div>
+        <div class="faq-a">We're tool-agnostic — we work with native tooling (AWS Cost Explorer, Azure Cost Management), Apptio Cloudability, CloudHealth, Vantage and Kubecost. Our preference is whatever your finance team will actually use; the best tool is the one that doesn't get abandoned in month three.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do you handle data residency and regulatory compliance?</div>
+        <div class="faq-a">We design landing zones with data classification baked in, including region-pinning policies, encryption at rest and in transit, key management lifecycles and audit logging that's actually queryable. We've supported clients through SOC 2, ISO 27001 and RBI-related compliance audits.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Cloud strategy, migration or <em>cost recovery?</em></h2>
+      <p>Tell us where you are and where you'd like to be. We'll come back inside one business day with a realistic next step — usually a free 1-hour assessment call.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Talk to a cloud architect →</a>
+      <a href="mailto:rajnswiss@gmail.com" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">Email us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

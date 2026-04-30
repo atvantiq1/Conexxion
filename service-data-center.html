@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Data Center Services — Conexxion Tech India</title>
+<meta name="description" content="Data center design, build, migration and 24x7 operations services. Greenfield builds, structured cabling, DCIM, rack & stack and colocation-grade facility ops." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .service-hero { background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg) 100%); padding: 70px 0 90px; position: relative; overflow: hidden; }
+  .service-hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+  .service-hero h1 { margin: 20px 0 24px; }
+  .service-hero .lede { font-size: 19px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 32px; max-width: 560px; }
+  .service-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .service-hero-img { border-radius: 14px; overflow: hidden; height: 480px; box-shadow: var(--shadow-lg); position: relative; }
+  .service-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .service-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(13,59,102,0.4) 100%); }
+  .service-hero-tag { position: absolute; bottom: 24px; left: 24px; background: rgba(255,255,255,0.95); color: var(--brand); padding: 12px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; z-index: 2; box-shadow: var(--shadow-sm); }
+
+  .quick-stats { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px 0; }
+  .quick-stats .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+  .quick-stat { text-align: center; padding: 0 20px; border-right: 1px solid var(--line); }
+  .quick-stat:last-child { border-right: none; }
+  .quick-stat .num { font-family: 'Fraunces', serif; font-size: 42px; color: var(--brand); line-height: 1; margin-bottom: 8px; font-weight: 500; }
+  .quick-stat .label { font-size: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .content-section { padding: 100px 0; }
+  .content-section.alt { background: var(--bg-cream); }
+  .two-col { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .two-col h2 { margin-bottom: 24px; }
+  .two-col p { font-size: 16.5px; line-height: 1.7; margin-bottom: 18px; }
+  .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 50px; align-items: end; }
+  .section-intro h2 { max-width: 540px; }
+  .section-intro p { font-size: 17px; line-height: 1.65; max-width: 480px; }
+
+  /* Service tiers (lifecycle) */
+  .lifecycle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    position: relative;
+  }
+  .lifecycle-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 32px 28px 36px;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .lifecycle-card:not(:last-child) { border-right: none; }
+  .lifecycle-card:hover {
+    background: var(--bg-cream);
+    z-index: 2;
+  }
+  .lifecycle-card .phase-num {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .lifecycle-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .lifecycle-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .lifecycle-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .lifecycle-card ul li {
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-top: 1px dashed var(--line);
+    line-height: 1.4;
+  }
+  .lifecycle-card ul li:first-child { border-top: none; }
+
+  /* Feature blocks */
+  .feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .feature-block:last-child { margin-bottom: 0; }
+  .feature-block.reverse { direction: rtl; }
+  .feature-block.reverse > * { direction: ltr; }
+  .feature-block-img {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 420px;
+    box-shadow: var(--shadow-md);
+  }
+  .feature-block-img img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-block-content h3 { margin-bottom: 18px; }
+  .feature-block-content p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .feature-block-content .pill {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: var(--accent-soft);
+    color: var(--brand);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .feature-block-content ul {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .feature-block-content ul li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .feature-block-content ul li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  /* Standards */
+  .standards-section {
+    padding: 100px 0;
+    background: var(--brand-deep);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .standards-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+  }
+  .standards-section .container { position: relative; }
+  .standards-section h2 { color: #fff; margin-bottom: 24px; }
+  .standards-section h2 em { color: var(--accent); }
+  .standards-section p { color: #cdd5e0; }
+  .standards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+  .standard-badge {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+  .standard-badge:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--accent);
+  }
+  .standard-badge .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .standard-badge h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .standard-badge p {
+    font-size: 13.5px;
+    color: #95a0b2;
+    line-height: 1.5;
+  }
+
+  /* Case study */
+  .case-study {
+    background: #fff;
+    border-radius: 14px;
+    padding: 50px;
+    border: 1px solid var(--line);
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .case-study .case-img { border-radius: 10px; overflow: hidden; height: 320px; }
+  .case-study .case-img img { width: 100%; height: 100%; object-fit: cover; }
+  .case-study .case-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; font-weight: 500; }
+  .case-study h3 { font-size: 28px; margin-bottom: 16px; }
+  .case-study p { font-size: 15.5px; line-height: 1.65; margin-bottom: 24px; }
+  .case-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 20px; }
+  .case-stat .num { font-family: 'Fraunces', serif; font-size: 32px; color: var(--brand); line-height: 1; }
+  .case-stat .label { font-size: 12px; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+
+  /* FAQ */
+  .faq-grid { margin-top: 50px; max-width: 880px; }
+  .faq-item { border-top: 1px solid var(--line); padding: 24px 0; }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); margin-bottom: 10px; font-weight: 500; }
+  .faq-a { font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); }
+
+  @media (max-width: 960px) {
+    .service-hero { padding: 40px 0 60px; }
+    .service-hero-grid, .two-col, .section-intro, .feature-block, .case-study { grid-template-columns: 1fr; gap: 40px; }
+    .feature-block.reverse { direction: ltr; }
+    .service-hero-img, .feature-block-img { height: 320px; }
+    .quick-stats .container, .standards-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .quick-stat { border-right: none; }
+    .quick-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+    .lifecycle-grid { grid-template-columns: 1fr; }
+    .lifecycle-card:not(:last-child) { border-right: 1px solid var(--line); border-bottom: none; }
+    .case-study { padding: 30px; }
+    .case-stats-row { grid-template-columns: 1fr; gap: 12px; }
+    .content-section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📍 Mysore, Karnataka</span>
+      <span>📞 +91 XXX-XXX-XXXX</span>
+      <span>✉ rajnswiss@gmail.com</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#">Careers</a><a href="#">Investor Relations</a><a href="#">Support</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">CT</span>
+      Conexxion<em>·</em>Tech
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-services">
+        <a href="#" class="active">Services ▾</a>
+        <div class="dropdown">
+          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
+          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
+          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
+          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+        </div>
+      </li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="service-hero">
+  <div class="container">
+    <div class="service-hero-grid">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span>/</span><a href="#">Services</a><span>/</span>Data Center
+        </div>
+        <span class="eyebrow">Service 03 — Facility Engineering</span>
+        <h1>Data centers that <em>migrate quietly</em> and run for years.</h1>
+        <p class="lede">
+          End-to-end data center delivery — design and build, structured cabling, rack &amp; stack, migrations, DCIM and 24×7 facility operations. Colocation-grade discipline whether you're building a 50-rack edge or a hyperscale hall.
+        </p>
+        <div class="service-hero-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg">Discuss your project →</a>
+          <a href="#lifecycle" class="btn btn-outline btn-lg">View lifecycle</a>
+        </div>
+      </div>
+      <div class="service-hero-img">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" alt="Data center" />
+        <div class="service-hero-tag">⚡ 99.98% uptime delivered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<div class="quick-stats">
+  <div class="container">
+    <div class="quick-stat">
+      <div class="num">15+</div>
+      <div class="label">DC projects delivered</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">800+</div>
+      <div class="label">Racks installed</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">99.98%</div>
+      <div class="label">Uptime managed</div>
+    </div>
+    <div class="quick-stat">
+      <div class="num">0</div>
+      <div class="label">Migration data losses</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="content-section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow">Our DC practice</span>
+        <h2 style="margin-top: 20px;">Engineered like infrastructure. <em>Documented like aviation.</em></h2>
+      </div>
+      <div>
+        <p>
+          Data center work doesn't reward improvisation. It rewards method. Every Conexxion DC engagement runs on a documented method-of-procedure — every cable label, every PDU port, every cabinet U-position recorded against a master inventory before a single power cord is connected.
+        </p>
+        <p>
+          That discipline is why our migrations close inside their windows, our cable rooms stay legible five years later, and our operations teams can find a faulty PDU in under three minutes — not three hours.
+        </p>
+        <p>
+          We work with enterprises building captive data centers, colocation providers, and operators commissioning edge facilities for low-latency workloads.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFECYCLE -->
+<section class="content-section alt" id="lifecycle">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Lifecycle services</span>
+        <h2 style="margin-top: 20px;">Four phases. <em>One accountable team</em> across the lifecycle.</h2>
+      </div>
+      <p>
+        Most providers specialize in one or two phases. We deliver across all four — which means handovers between design, build, migrate and operate happen inside Conexxion, not across vendor invoices.
+      </p>
+    </div>
+
+    <div class="lifecycle-grid">
+      <div class="lifecycle-card">
+        <div class="phase-num">01</div>
+        <h4>Design</h4>
+        <p>Architecture, capacity planning and detailed engineering for new and expansion builds.</p>
+        <ul>
+          <li>Capacity &amp; growth modelling</li>
+          <li>Power, cooling &amp; redundancy design</li>
+          <li>Rack elevation drawings</li>
+          <li>Cable route &amp; pathway design</li>
+          <li>Compliance to TIA-942 / Uptime tiers</li>
+        </ul>
+      </div>
+      <div class="lifecycle-card">
+        <div class="phase-num">02</div>
+        <h4>Build</h4>
+        <p>Civil, MEP, electrical, structured cabling and equipment install — turnkey or specific scopes.</p>
+        <ul>
+          <li>White-space build &amp; commissioning</li>
+          <li>Structured cabling (Cat6A, OS2, OM4)</li>
+          <li>PDU &amp; busway installation</li>
+          <li>Rack &amp; stack execution</li>
+          <li>Acceptance testing &amp; documentation</li>
+        </ul>
+      </div>
+      <div class="lifecycle-card">
+        <div class="phase-num">03</div>
+        <h4>Migrate</h4>
+        <p>Workload, server and storage migrations executed inside customer-defined change windows.</p>
+        <ul>
+          <li>Migration runbook design</li>
+          <li>Inventory &amp; dependency mapping</li>
+          <li>Weekend / overnight cutovers</li>
+          <li>Rollback &amp; freeze-window protocols</li>
+          <li>Post-migration smoke tests</li>
+        </ul>
+      </div>
+      <div class="lifecycle-card">
+        <div class="phase-num">04</div>
+        <h4>Operate</h4>
+        <p>24×7 facility operations, smart-hands and DCIM-driven monitoring with monthly SLAs.</p>
+        <ul>
+          <li>24×7 onsite shift coverage</li>
+          <li>Smart-hands &amp; remote-hands SLAs</li>
+          <li>DCIM dashboards &amp; alerts</li>
+          <li>Spare-parts management</li>
+          <li>Monthly SLA &amp; capacity reporting</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BLOCKS -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">What we deliver</span>
+        <h2 style="margin-top: 20px;">Three signature scopes <em>where we go deepest.</em></h2>
+      </div>
+      <p>
+        The work we get hired for again and again — because it's the work that's hardest to do correctly the first time.
+      </p>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=900&q=80" alt="DC build" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Greenfield Builds</span>
+        <h3>From shell to first-server-online — turnkey DC builds.</h3>
+        <p>
+          We deliver white-space builds for enterprises and colocation providers — including civil interior fit-outs, raised flooring, hot/cold containment, electrical distribution, cooling, fire suppression, structured cabling and rack readiness. One project manager, one delivery lead, one acceptance certificate.
+        </p>
+        <ul>
+          <li>50 to 1,000 rack capacity builds</li>
+          <li>Tier-III aligned design and execution</li>
+          <li>Commissioning to L5 testing standards</li>
+          <li>Full as-built documentation pack at handover</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block reverse">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=900&q=80" alt="DC migration" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Migrations</span>
+        <h3>Migrations engineered for zero unplanned outage.</h3>
+        <p>
+          Whether you're consolidating two halls into one, moving from a captive facility to colocation, or relocating across cities — we plan migrations the way airlines plan turn-arounds. Every connection, every dependency, every cutover step rehearsed before it happens.
+        </p>
+        <ul>
+          <li>Wave-based cutover plans with measurable checkpoints</li>
+          <li>Application-dependency mapping and freeze windows</li>
+          <li>On-the-wire change tracking with auto-rollback triggers</li>
+          <li>Documentation handed back as runbooks for steady-state ops</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-block-img">
+        <img src="https://images.unsplash.com/photo-1597733336794-12d05021d510?w=900&q=80" alt="DC operations" />
+      </div>
+      <div class="feature-block-content">
+        <span class="pill">Managed Operations</span>
+        <h3>24×7 facility operations with the documentation to prove it.</h3>
+        <p>
+          Once your facility is live, we operate it — onsite shifts, smart-hands, DCIM-driven dashboards, environmental monitoring, capacity reporting and spare-parts logistics. Our SLAs are tracked openly; our monthly reports don't require a decoder ring.
+        </p>
+        <ul>
+          <li>L1 / L2 / L3 facility engineers on roster</li>
+          <li>30-minute response on critical alarms</li>
+          <li>Monthly capacity, environmental and incident reporting</li>
+          <li>Quarterly business reviews chaired by a director</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDARDS -->
+<section class="standards-section">
+  <div class="container">
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+      <span class="eyebrow" style="color: var(--accent);">Standards &amp; methodology</span>
+      <h2 style="margin-top: 20px;">We follow the <em>boring rules</em> that keep facilities running.</h2>
+      <p style="max-width: 640px; margin: 16px auto 0;">
+        Every Conexxion project is delivered against documented standards. Not because audit checklists are exciting — but because they're the difference between five quiet years and one expensive incident.
+      </p>
+    </div>
+
+    <div class="standards-grid">
+      <div class="standard-badge">
+        <div class="label">Design</div>
+        <h4>TIA-942</h4>
+        <p>Compliant data center infrastructure standards for cabling, redundancy and site selection.</p>
+      </div>
+      <div class="standard-badge">
+        <div class="label">Reliability</div>
+        <h4>Uptime Tier-III</h4>
+        <p>Concurrent-maintainability aligned design for enterprise and edge data centers.</p>
+      </div>
+      <div class="standard-badge">
+        <div class="label">Quality</div>
+        <h4>ISO 9001</h4>
+        <p>Documented QMS covering design, build, change management and operations.</p>
+      </div>
+      <div class="standard-badge">
+        <div class="label">Information Security</div>
+        <h4>ISO 27001</h4>
+        <p>Aligned ISMS with controlled access, secure handling and audit trails for client data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="content-section">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">Case in point</span>
+        <h2 style="margin-top: 20px;">Two-site DC consolidation, <em>zero unplanned outage.</em></h2>
+      </div>
+      <p>
+        A manufacturing conglomerate consolidated two captive data centers into a single colocation hall. We delivered the migration across two weekends.
+      </p>
+    </div>
+
+    <div class="case-study">
+      <div class="case-img">
+        <img src="https://images.unsplash.com/photo-1551808525-51a94da548ce?w=900&q=80" alt="DC consolidation" />
+      </div>
+      <div>
+        <div class="case-tag">CASE STUDY · MANUFACTURING CONGLOMERATE</div>
+        <h3>320 servers, 14 storage arrays, 2 weekends, 0 incidents.</h3>
+        <p>
+          The challenge: consolidate two ageing captive sites in Pune and Aurangabad into a single colocation facility in Mumbai — with manufacturing operations dependent on minimal-disruption cutovers. We designed a wave-based plan with full rollback paths at every checkpoint and executed it across two weekend windows.
+        </p>
+        <div class="case-stats-row">
+          <div class="case-stat">
+            <div class="num">320</div>
+            <div class="label">Servers migrated</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">2</div>
+            <div class="label">Weekend windows</div>
+          </div>
+          <div class="case-stat">
+            <div class="num">0</div>
+            <div class="label">Unplanned outages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section alt">
+  <div class="container">
+    <div class="section-intro">
+      <div>
+        <span class="eyebrow">FAQ</span>
+        <h2 style="margin-top: 20px;">Questions <em>CIOs ask</em> before greenlighting a DC project.</h2>
+      </div>
+      <p>
+        If your question isn't here, write to us — we'll respond inside one business day with a real engineer's answer.
+      </p>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">Do you take Tier-III certification through Uptime Institute?</div>
+        <div class="faq-a">We design and build to Tier-III aligned standards and have led clients through Uptime Institute design and constructed-facility certifications. Whether formal certification is pursued is a client commercial decision — we'll be transparent about cost and timeline impact upfront.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's your typical migration window planning approach?</div>
+        <div class="faq-a">We typically run a 4–6 week planning phase that includes inventory verification, application-dependency mapping, freeze-window definition, cutover wave planning and at least one tabletop dry run. Migration execution is then planned across one or more change windows with documented rollback triggers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you support multi-vendor environments (HPE, Dell, Cisco, etc.)?</div>
+        <div class="faq-a">Yes. Our DC engineers are certified across major OEMs including HPE, Dell EMC, Cisco UCS, Lenovo, Pure, NetApp, IBM and Huawei. We typically map specific OEM coverage at the kickoff against your installed base.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's included in your managed operations SLA?</div>
+        <div class="faq-a">A standard managed operations engagement covers 24×7 onsite presence, 30-minute response on P1 alarms, environmental and capacity monitoring via DCIM, monthly capacity and incident reports, quarterly governance, and spare-parts logistics. SLA tiers are customized per facility criticality.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you handle cabling certification and as-built documentation?</div>
+        <div class="faq-a">Yes — every Conexxion build is handed over with complete as-built documentation: rack elevations, cable schedules, port-to-port maps, power schematics, BMS diagrams and certified cabling test results (Fluke or equivalent). It's the boring deliverable that pays for itself in year three.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <h2>Building, migrating or operating a <em>data center?</em></h2>
+      <p>Tell us the size, the standard, and the timeline. We'll come back inside one business day with a realistic delivery plan and a named project lead.</p>
+    </div>
+    <div class="cta-band-actions">
+      <a href="contact.html" class="btn btn-accent btn-lg">Talk to a DC engineer →</a>
+      <a href="mailto:rajnswiss@gmail.com" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;">Email us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Conexxion<em>·</em>Tech</div>
+        <p class="footer-tag">Infrastructure, talent, telecom and cloud — engineered together for the connected enterprise.</p>
+        <div class="footer-social"><a href="#">in</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">✉</a></div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="service-it-staffing.html">IT Staffing</a></li>
+          <li><a href="service-telecom.html">Telecom</a></li>
+          <li><a href="service-data-center.html">Data Center</a></li>
+          <li><a href="service-cloud.html">Cloud Infrastructure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog & Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <p>
+          Conexxion Tech India Pvt. Ltd.<br>
+          No. 77/2, 78/2 Nachanahalli Palya<br>
+          Mysore, Karnataka 570008<br>
+          India<br><br>
+          <a href="mailto:rajnswiss@gmail.com">rajnswiss@gmail.com</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conexxion Tech India Pvt. Ltd. All rights reserved.</span>
+      <span>CIN: U74900KA2015PTC080993</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
