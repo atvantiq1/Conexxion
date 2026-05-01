@@ -594,25 +594,82 @@
   }
 
   /* RESPONSIVE */
-  @media (max-width: 960px) {
-    .hero { padding: 50px 0 70px; }
-    .hero-grid, .why-grid, .section-intro {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .hero-visual { height: 420px; }
-    .hero-img-1 { width: 70%; height: 280px; }
-    .hero-img-2 { width: 60%; height: 220px; }
-    .services-grid, .why-features, .testimonials-grid, .insights-grid, .approach-grid, .stats-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .stats-grid { gap: 1px; }
-    .trust-band .container { grid-template-columns: 1fr; gap: 20px; }
-    .trust-logos { gap: 20px; }
-    .trust-logo { font-size: 18px; }
-    .why-section, .approach-section, .testimonials-section { padding: 70px 0; }
-    .insights-section { padding-bottom: 70px; }
+  /* RESPONSIVE */
+@media (max-width: 960px) {
+  .container { padding: 0 20px; }
+  
+  /* --- NEW MOBILE NAV STYLES --- */
+  .mobile-menu-toggle {
+    display: block; /* Show hamburger icon */
   }
+
+  .nav-cta {
+    display: none; /* Hides the button on small screens to save space */
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 0 20px;
+    box-shadow: var(--shadow-md);
+    
+    /* Animation state: Hidden by default */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  /* When the 'active' class is added via JS */
+  .nav-links.active {
+    max-height: 600px;
+    opacity: 1;
+    padding: 16px 20px 24px;
+  }
+
+  .nav-links > li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .nav-links > li:last-child > a {
+    border-bottom: none;
+  }
+
+  /* Make the dropdown visible and indented on mobile */
+  .nav-services .dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid var(--brand);
+    border-radius: 0;
+    padding: 4px 0 4px 16px;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+  }
+  
+  /* Keep the rest of your existing 960px responsive styles here... */
+  .hero { padding: 50px 0 70px; }
+  .hero-grid, .why-grid, .section-intro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  /* ... */
+}
   @media (max-width: 600px) {
     .services-grid, .why-features, .testimonials-grid, .insights-grid, .approach-grid, .stats-grid {
       grid-template-columns: 1fr;
@@ -646,7 +703,7 @@
   <div class="container">
     <a href="index.html" class="logo">
       <span class="logo-mark">CT</span>
-      Conexxion<em>·</em>Tech
+      <div class="nav-brand">Conexxion<em>·</em>Tech</div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
@@ -675,7 +732,19 @@
       <!-- <li><a href="blog.html">Blog</a></li> -->
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
-    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+    
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary nav-cta">Get a Quote →</a>
+      
+      <!-- Hamburger Menu Icon -->
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -1133,4 +1202,12 @@
 </footer>
 
 </body>
+<script>
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 </html>

@@ -161,7 +161,9 @@ nav.main-nav .container {
   border: 2px solid var(--bg);
 }
 .logo em { font-style: italic; color: var(--brand); font-weight: 500; }
-
+.nav-brand {
+  letter-spacing: -0.02em;
+}
 .nav-links {
   display: flex;
   gap: 36px;
@@ -484,17 +486,109 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
+/* ============================================
+   NAV ACTIONS & HAMBURGER (Base Styles)
+   ============================================ */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 4px;
+}
 @media (max-width: 960px) {
   .container { padding: 0 20px; }
-  .nav-links { display: none; }
   .topbar { font-size: 11px; padding: 8px 0; }
   .topbar-left { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .cta-band .container { grid-template-columns: 1fr; }
   .cta-band-actions { justify-content: flex-start; }
-  .form-row { grid-template-columns: 1fr; }
-  .page-header { padding: 50px 0 40px; }
+
+  /* New Mobile Nav Logic */
+  .mobile-menu-toggle { display: block; }
+  .nav-cta { display: none; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 0 20px;
+    box-shadow: var(--shadow-md);
+    
+    /* Animation state */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  /* FIX 1: Increased max-height to 1000px and added overflow-y to ensure no clipping */
+  .nav-links.active { 
+    max-height: 1000px; 
+    overflow-y: auto;
+    opacity: 1; 
+    padding: 12px 20px 20px; 
+  }
+  
+  .nav-links > li { width: 100%; }
+  
+  /* FIX 2: Reduced padding from 14px to 10px to tighten up the spacing */
+  .nav-links a { 
+    display: block; 
+    padding: 10px 0; 
+    border-bottom: 1px solid var(--line-soft); 
+  }
+  
+  .nav-links > li:last-child > a { border-bottom: none; }
+  
+  /* FIX 3: Hides the desktop yellow/orange underline on mobile completely */
+  .nav-links a.active::after { 
+    display: none !important; 
+  }
+  
+  .nav-services .dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid var(--brand);
+    border-radius: 0;
+    padding: 4px 0 4px 16px;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: transparent;
+  }
+  
+  /* Optional: slightly tightens up the dropdown links too */
+  .nav-services .dropdown a {
+    padding: 8px 14px;
+  }
+
+  /* Homepage Overrides */
+  .hero { padding: 50px 0 70px; }
+  .hero-grid, .why-grid, .section-intro { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { height: 420px; }
+  .hero-img-1 { width: 70%; height: 280px; }
+  .hero-img-2 { width: 60%; height: 220px; }
+  .services-grid, .why-features, .testimonials-grid, .insights-grid, .approach-grid, .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { gap: 1px; }
+  .trust-band .container { grid-template-columns: 1fr; gap: 20px; }
+  .trust-logos { gap: 20px; }
+  .trust-logo { font-size: 18px; }
+  .why-section, .approach-section, .testimonials-section { padding: 70px 0; }
+  .insights-section { padding-bottom: 70px; }
 }
 
 @media (max-width: 600px) {

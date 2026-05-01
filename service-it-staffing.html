@@ -372,24 +372,48 @@
   <div class="container">
     <a href="index.html" class="logo">
       <span class="logo-mark">CT</span>
-      Conexxion<em>·</em>Tech
+      <div class="nav-brand">Conexxion<em>·</em>Tech</div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li class="nav-services">
-        <a href="#" class="active">Services ▾</a>
+        <a href="#">Services ▾</a>
         <div class="dropdown">
-          <a href="service-it-staffing.html">IT Staffing<small>Talent acquisition & managed teams</small></a>
-          <a href="service-telecom.html">Telecom<small>Network rollout & 5G engineering</small></a>
-          <a href="service-data-center.html">Data Center<small>Build, migrate & operate</small></a>
-          <a href="service-cloud.html">Cloud Infrastructure<small>AWS, Azure & hybrid platforms</small></a>
+          <a href="service-it-staffing.html">
+            IT Staffing
+            <small>Talent acquisition & managed teams</small>
+          </a>
+          <a href="service-telecom.html">
+            Telecom
+            <small>Network rollout & 5G engineering</small>
+          </a>
+          <a href="service-data-center.html">
+            Data Center
+            <small>Build, migrate & operate</small>
+          </a>
+          <a href="service-cloud.html">
+            Cloud Infrastructure
+            <small>AWS, Azure & hybrid platforms</small>
+          </a>
         </div>
       </li>
       <li><a href="about.html">About Us</a></li>
       <!-- <li><a href="blog.html">Blog</a></li> -->
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
-    <a href="contact.html" class="btn btn-primary">Get a Quote →</a>
+    
+    <div class="nav-actions">
+      <a href="contact.html" class="btn btn-primary nav-cta">Get a Quote →</a>
+      
+      <!-- Hamburger Menu Icon -->
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -766,4 +790,12 @@
 </footer>
 
 </body>
+<script>
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+</script>
 </html>
